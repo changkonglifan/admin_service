@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,7 +34,11 @@ public class AccountController {
             @ApiImplicitParam(paramType = "form", dataType = "String", name = "username", value = "用户名", required = false),
             @ApiImplicitParam(paramType = "form", dataType = "String", name = "name", value = "姓名", required = false)
     })
-    public JSONObject getAll(){
+    public JSONObject getAll(
+            HttpServletRequest request,
+            @RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "name", required = true) String name
+    ){
         List<Account> list = accountService.getAccount();
         JSONObject js = new JSONObject();
         js.put("list", list);
@@ -43,28 +48,53 @@ public class AccountController {
 
     /**
      * 新增用户
-     * @param account
+     * @param request
+     * @param username
+     * @param password
      * @return
      */
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public Result insertAccount(@RequestBody Account account){
-        Result result = new Result();
+    @ApiOperation("新增用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "form", dataType = "String", name = "username", value = "用户名", required = true),
+            @ApiImplicitParam(paramType = "form", dataType = "String", name = "password", value = "密码", required = true),
+            @ApiImplicitParam(paramType = "form", dataType = "String", name = "realName", value = "真实姓名", required = true),
+            @ApiImplicitParam(paramType = "form", dataType = "String", name = "email", value = "邮箱", required = false),
+            @ApiImplicitParam(paramType = "form", dataType = "String", name = "phone", value = "手机", required = false),
+    })
+    public JSONObject addUser(
+            HttpServletRequest request,
+            @RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "password", required = true) String password,
+            @RequestParam(value = "realName", required = true) String realName,
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "phone", required = false) String phone
+    ){
+        try{
+            JSONObject js = new JSONObject();
+            Account account = new Account();
+            Account accountList = getAccountByUserName((account.getUsername()));
+            System.out.print(account.getUsername());
+            if(accountList != null){
 
-        Account accountList = getAccountByUserName((account.getUsername()));
-        System.out.print(account.getUsername());
-        if(accountList != null){
-            result.setCode(-1);
-            result.setMsg("当前用户名已存在");
-            return result;
+                return MessageOut.failed(-1, "用户已存在");
+            }
+            account.setUuid(UUID.randomUUID().toString());
+            account.setUsername(username);
+            account.setPassword(password);
+            account.setRealName(realName);
+            account.setEmail(email);
+            account.setPhone(phone);
+            account.setIsDel(0);
+            System.out.print(account);
+            int insert = accountService.insertAccount(account);
+            if(insert == 1){
+                return MessageOut.successful();
+            }
+        }catch (Exception e){
+            return MessageOut.failed(-1, e.getMessage());
         }
-        account.setUuid(UUID.randomUUID().toString());
-        int insert = accountService.insertAccount(account);
-        if(insert == 1){
-            result.setCode(1);
-            result.setMsg("成功");
-            return result;
-        }
-        return result;
+        return MessageOut.successful();
     }
 
     /**

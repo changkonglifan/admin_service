@@ -48,5 +48,14 @@ public class MessageOut {
         return output(1, "成功");
     }
 
+    /**
+     * 失败
+     * @param code
+     * @param msg
+     * @return
+     */
+    public static JSONObject failed(int code, String msg){return output(code, msg);}
+    public static JSONObject failed(int code, String msg, Object object){return output(code, msg, object);}
+
 }
 
