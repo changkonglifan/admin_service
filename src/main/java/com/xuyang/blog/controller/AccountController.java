@@ -2,7 +2,6 @@ package com.xuyang.blog.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.blog.entity.Account;
-import com.xuyang.blog.entity.Result;
 import com.xuyang.blog.service.AccountService;
 import com.xuyang.blog.utils.MessageOut;
 import io.swagger.annotations.Api;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -48,76 +46,59 @@ public class AccountController {
 
     /**
      * 新增用户
-     * @param request
-     * @param username
-     * @param password
+//     * @param request
+//     * @param username
+//     * @param password
      * @return
      */
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    @ApiOperation("新增用户")
+    @ApiOperation(value = "添加用户", notes = "添加")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "form", dataType = "String", name = "username", value = "用户名", required = true),
-            @ApiImplicitParam(paramType = "form", dataType = "String", name = "password", value = "密码", required = true),
-            @ApiImplicitParam(paramType = "form", dataType = "String", name = "realName", value = "真实姓名", required = true),
-            @ApiImplicitParam(paramType = "form", dataType = "String", name = "email", value = "邮箱", required = false),
-            @ApiImplicitParam(paramType = "form", dataType = "String", name = "phone", value = "手机", required = false),
+            @ApiImplicitParam(dataType = "String", name = "username", value = "用户名", required = true),
+            @ApiImplicitParam(dataType = "String", name = "password", value = "密码", required = true),
+            @ApiImplicitParam(dataType = "String", name = "realName", value = "真实姓名", required = true),
+            @ApiImplicitParam(dataType = "String", name = "email", value = "邮箱"),
+            @ApiImplicitParam(dataType = "String", name = "phone", value = "手机"),
     })
+    @RequestMapping(value="/add", method = RequestMethod.POST)
+    @ResponseBody
     public JSONObject addUser(
-            HttpServletRequest request,
-            @RequestParam(value = "username", required = true) String username,
-            @RequestParam(value = "password", required = true) String password,
-            @RequestParam(value = "realName", required = true) String realName,
+//            HttpServletRequest request,
+            @RequestParam(value = "username") String username,
+            @RequestParam(value = "password") String password,
+            @RequestParam(value = "realName") String realName,
             @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "phone", required = false) String phone
     ){
         try{
             JSONObject js = new JSONObject();
-            Account account = new Account();
-            Account accountList = getAccountByUserName((account.getUsername()));
-            System.out.print(account.getUsername());
-            if(accountList != null){
-
-                return MessageOut.failed(-1, "用户已存在");
-            }
-            account.setUuid(UUID.randomUUID().toString());
-            account.setUsername(username);
-            account.setPassword(password);
-            account.setRealName(realName);
-            account.setEmail(email);
-            account.setPhone(phone);
-            account.setIsDel(0);
-            System.out.print(account);
-            int insert = accountService.insertAccount(account);
-            if(insert == 1){
+//            Account account = new Account();
+            System.out.print(username);
+//            Account accountList = accountService.getAccountByUserName(username);
+//            System.out.print(accountList);
+//            String newPassword = RSAEncrypt.decrypt(password);
+//            if(newPassword.length() < 6){
+//                return MessageOut.failed(-1, "密码长度不符合规则");
+//            }
+//            if(accountList != null){
+//
+//                return MessageOut.failed(-1, "用户已存在");
+//            }
+//            account.setUuid(UUID.randomUUID().toString());
+//            account.setUsername(username);
+//            // md5 加密密码
+//            account.setPassword(Common.getMD5Str(newPassword));
+//            account.setRealName(realName);
+//            account.setEmail(email);
+//            account.setPhone(phone);
+//            account.setIsDel(0);
+//            System.out.print(account);
+//            int insert = accountService.insertAccount(account);
+//            if(insert == 1){
                 return MessageOut.successful();
-            }
+//            }
         }catch (Exception e){
             return MessageOut.failed(-1, e.getMessage());
         }
-        return MessageOut.successful();
-    }
-
-    /**
-     * 更新用户
-     * @param account
-     * @return
-     */
-    public Result updateAccount(@RequestBody Account account){
-        Result result = new Result();
-        int update = accountService.updateAccount(account);
-        if(update == 1){
-            result.setCode(1);
-            result.setMsg("成功");
-            return result;
-        }
-        return result;
-    }
-    /**
-     * 根据用户名查询用户
-     * @param userName
-     * @return
-     */
-    public Account getAccountByUserName(String userName){
-        return accountService.getAccountByUserName(userName);
+//        return MessageOut.successful();
     }
 }
