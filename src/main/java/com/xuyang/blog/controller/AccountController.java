@@ -3,7 +3,9 @@ package com.xuyang.blog.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.blog.entity.Account;
 import com.xuyang.blog.service.AccountService;
+import com.xuyang.blog.utils.Common;
 import com.xuyang.blog.utils.MessageOut;
+import com.xuyang.blog.utils.RSAEncrypt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -71,34 +74,34 @@ public class AccountController {
     ){
         try{
             JSONObject js = new JSONObject();
-//            Account account = new Account();
+            Account account = new Account();
             System.out.print(username);
-//            Account accountList = accountService.getAccountByUserName(username);
-//            System.out.print(accountList);
-//            String newPassword = RSAEncrypt.decrypt(password);
-//            if(newPassword.length() < 6){
-//                return MessageOut.failed(-1, "密码长度不符合规则");
-//            }
-//            if(accountList != null){
-//
-//                return MessageOut.failed(-1, "用户已存在");
-//            }
-//            account.setUuid(UUID.randomUUID().toString());
-//            account.setUsername(username);
-//            // md5 加密密码
-//            account.setPassword(Common.getMD5Str(newPassword));
-//            account.setRealName(realName);
-//            account.setEmail(email);
-//            account.setPhone(phone);
-//            account.setIsDel(0);
-//            System.out.print(account);
-//            int insert = accountService.insertAccount(account);
-//            if(insert == 1){
+            Account accountList = accountService.getAccountByUserName(username);
+            System.out.print(accountList);
+            String newPassword = RSAEncrypt.decrypt(password);
+            if(newPassword.length() < 6){
+                return MessageOut.failed(-1, "密码长度不符合规则");
+            }
+            if(accountList != null){
+
+                return MessageOut.failed(-1, "用户已存在");
+            }
+            account.setUuid(UUID.randomUUID().toString());
+            account.setUsername(username);
+            // md5 加密密码
+            account.setPassword(Common.getMD5Str(newPassword));
+            account.setRealName(realName);
+            account.setEmail(email);
+            account.setPhone(phone);
+            account.setIsDel(0);
+            System.out.print(account);
+            int insert = accountService.insertAccount(account);
+            if(insert == 1){
                 return MessageOut.successful();
-//            }
+            }
         }catch (Exception e){
             return MessageOut.failed(-1, e.getMessage());
         }
-//        return MessageOut.successful();
+        return MessageOut.successful();
     }
 }
