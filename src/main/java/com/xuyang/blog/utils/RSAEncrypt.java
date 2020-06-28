@@ -20,7 +20,13 @@ public class RSAEncrypt {
 
     public static void main(String args[]) throws Exception {
         String password = "123456";
-        System.out.print(encrypt(password));
+        System.out.println(encrypt(password));
+        try{
+            String n = "f2D0itW5q8XndGMmUJCXfNJD+QB2ZCxGQb3BE/Fd+BuS6tiJEsxWgEMuduubh9F5ZUCiDETDQiDeAiOarvoUajimDfRaaFJe3LfmxHYdJJAOJeL01V+Wem/44cWVQXF/ZBDtFSSB5Wfm+QWLDqNrk05AXPuLoCiTsba2YtMtBmE=";
+            System.out.println(decrypt(n));
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     /**
      * RSA公钥加密

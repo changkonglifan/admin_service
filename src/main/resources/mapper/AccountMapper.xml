@@ -5,24 +5,20 @@
 <mapper namespace="com.xuyang.blog.dao.AccountMapper" >
     <!-- Result Map-->
     <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.Account">
-        <result column="uuid" />
-        <result column="username" />
-        <result column="password" />
-        <result column="isDel" />
+        <result column="uuid"  jdbcType="VARCHAR" property="uuid"/>
+        <result column="username" jdbcType="VARCHAR" property="password"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="is_del" jdbcType="VARCHAR" property="isDel"/>
+        <result column="isDisable" jdbcType="VARCHAR" property="isDisable"/>
+        <result column="errCount" jdbcType="VARCHAR" property="errCount"/>
+        <result column="usedPwd" jdbcType="VARCHAR" property="usedPwd"/>
+        <result column="lastUpdateTime" jdbcType="VARCHAR" property="lastUpdateTime"/>
+        <result column="lockTime" jdbcType="VARCHAR" property="lockTime"/>
     </resultMap>
-    <select id="queryAccountList" resultType="com.xuyang.blog.entity.Account">
-        select uuid,username,password,create_time as createTime,modify_time as modifyTime, is_del as isDel from account
-    </select>
-    <select id="getAccountByUserName" resultType="com.xuyang.blog.entity.Account">
-        select * from account WHERE username = #{username} limit 1
-    </select>
     <sql id="Base_Column_List">
-        uuid, username, password, isDel
-    </sql>
-    <insert id="insertAccount" parameterType="com.xuyang.blog.entity.Account">
-        insert into account(uuid,username,password,create_time,modify_time,is_del) values(#{uuid},#{username},#{password},now(),now(),#{isDel})
-    </insert>
-    <update id="updateAccount" parameterType="com.xuyang.blog.entity.Account">
-        update account set password=#{password}, modify_time = now() where uuid = #{uuid}
-    </update>
+      uuid, username, password, is_del, isDisable, errCount, usedPwd, lastUpdateTime, lockTime
+      </sql>
+    <select id="login" resultType="com.xuyang.blog.entity.Account">
+        select * from account where username=#{username} and password=#{password}
+    </select>
 </mapper>

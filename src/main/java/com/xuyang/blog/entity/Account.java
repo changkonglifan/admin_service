@@ -4,14 +4,16 @@ public class Account {
 
     private String uuid;
     private String username;
-    private String realName;
 
-    private String email;
-    private String phone;
     private String password;
     private String createTime;
     private String modifyTime;
-    private Integer isDel;
+    private String isDel;
+    private String isDisable;
+    private String errCount;
+    private String usePwd;
+    private String lastUpdateTime;
+    private String lockTime;
 
     public  static  final String IS_USER_DELETE = "1";
 
@@ -55,36 +57,51 @@ public class Account {
         this.modifyTime = modifyTime;
     }
 
-    public Integer getIsDel() {
+    public String getIsDel() {
         return isDel;
     }
 
-    public void setIsDel(Integer isDel) {
+    public void setIsDel(String isDel) {
         this.isDel = isDel;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getIsDisable() {
+        return isDisable;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setIsDisable(String isDisable) {
+        this.isDisable = isDisable;
     }
 
-    public String getEmail() {
-        return email;
+    public String getErrCount() {
+        return errCount;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setErrCount(String errCount) {
+        this.errCount = errCount;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getUsePwd() {
+        return usePwd;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUsePwd(String usePwd) {
+        this.usePwd = usePwd;
     }
 
+    public String getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(String lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public String getLockTime() {
+        return lockTime;
+    }
+
+    public void setLockTime(String lockTime) {
+        this.lockTime = lockTime;
+    }
 }

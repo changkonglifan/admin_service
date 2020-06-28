@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyang.blog.dao.AccountInfoMapper" >
+    <!-- Result Map-->
+    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.AccountInfo">
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickName"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="CHAR" property="sex"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="auth_range" property="authRange" jdbcType="VARCHAR"/>
+        <result column="auth_name" property="authName" jdbcType="CHAR"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="is_del" property="isDel" jdbcType="CHAR"/>
+        <result column="level"  jdbcType="CHAR" property="level"/>
+        <result column="job" jdbcType="VARCHAR" property="job"/>
+        <result column="introduction_of_" property="introduction" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getAccountInfo">
+        select username, nickName, name, sex, mobile, email, auth_name as authName, auth_range as authRange, avatar, is_del as isDel,
+         level,job, introduction_of_ as introduction, create_time as creaateTime, modify_time as modifyTime from account_info where uuid=#{uuid}
+    </select>
+</mapper>
