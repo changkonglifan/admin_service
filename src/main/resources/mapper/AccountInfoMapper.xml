@@ -18,12 +18,23 @@
         <result column="is_del" property="isDel" jdbcType="CHAR"/>
         <result column="level"  jdbcType="CHAR" property="level"/>
         <result column="job" jdbcType="VARCHAR" property="job"/>
-        <result column="introduction_of_" property="introduction" jdbcType="VARCHAR"/>
+        <result column="introduction_of_author" property="introduction" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
         <result column="modify_time" property="modifyTime" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="getAccountInfo">
+    <select id="getAccountInfo" resultType="com.xuyang.blog.entity.AccountInfo">
         select username, nickName, name, sex, mobile, email, auth_name as authName, auth_range as authRange, avatar, is_del as isDel,
-         level,job, introduction_of_ as introduction, create_time as creaateTime, modify_time as modifyTime from account_info where uuid=#{uuid}
+         level,job, introduction_of_author as introduction, create_time as creaateTime, modify_time as modifyTime from account_info where uuid=#{uuid}
     </select>
+    <insert id="addUser" parameterType="com.xuyang.blog.entity.AccountInfo">
+        insert into account_info(
+            uuid, username, nickName,name,sex,mobile,email,auth_range, auth_name,avatar, is_del, level, job, introduction_of_author,create_time,modify_time
+        )
+        values (
+            #{uuid},#{username},#{nickName}, #{name}, #{sex}, #{mobile}, #{email}, #{authRange}, #{authName}, #{avatar},#{isDel},#{level},#{job}, #{introduction}, now(), now()
+        )
+    </insert>
+    <delete id="deleteByUuid">
+        delete from account_info where uuid=#{uuid}
+    </delete>
 </mapper>

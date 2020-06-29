@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xuyang.blog.dao.AccountMapper" >
+<mapper namespace="com.xuyang.blog.dao.ArticleMapper" >
     <!-- Result Map-->
-    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.Account">
+    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.Article">
         <result column="uuid" />
         <result column="username" />
         <result column="password" />

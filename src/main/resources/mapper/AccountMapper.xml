@@ -14,11 +14,22 @@
         <result column="usedPwd" jdbcType="VARCHAR" property="usedPwd"/>
         <result column="lastUpdateTime" jdbcType="VARCHAR" property="lastUpdateTime"/>
         <result column="lockTime" jdbcType="VARCHAR" property="lockTime"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="modify_time" jdbcType="VARCHAR" property="modifyTime"/>
     </resultMap>
-    <sql id="Base_Column_List">
-      uuid, username, password, is_del, isDisable, errCount, usedPwd, lastUpdateTime, lockTime
-      </sql>
-    <select id="login" resultType="com.xuyang.blog.entity.Account">
+    <select id="login" resultMap="BaseResultMap">
         select * from account where username=#{username} and password=#{password}
     </select>
+    <select id="getAccountByUsername" resultMap="BaseResultMap">
+        select * from account where username=#{username}
+    </select>
+    <insert id="addUser" parameterType="com.xuyang.blog.entity.Account">
+        insert into account(uuid, username, password, is_del, isDisable, errCount, usedPwd, create_time, lastUpdatetime, modify_time)
+        values (
+            #{uuid},#{username},#{password},#{isDel},#{isDisable},#{errCount},#{usedPwd}, now(), now(), now()
+        )
+    </insert>
+    <delete id="deleteByUuid">
+        delete from account_info where uuid=#{uuid}
+    </delete>
 </mapper>

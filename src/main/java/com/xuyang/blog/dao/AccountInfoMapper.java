@@ -10,5 +10,10 @@ import org.mapstruct.Mapper;
  */
 @Mapper
 public interface AccountInfoMapper {
+
     AccountInfo getAccountInfo(String uuid);
+
+    Integer addUser(AccountInfo accountInfo);
+
+    Integer deleteByUuid(String uuid);
 }

@@ -21,4 +21,8 @@ public class AccountInfoService {
      * @return
      */
     public AccountInfo getAccountInfoByUuid(String uuid){return accountInfoMapper.getAccountInfo(uuid);}
+
+    public Integer addUser(AccountInfo accountInfo){return accountInfoMapper.addUser(accountInfo);}
+
+    public Integer deleteByUuid(String uuid){return accountInfoMapper.deleteByUuid(uuid);}
 }

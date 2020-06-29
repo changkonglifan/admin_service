@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-@Api(tags = "用户管理")
+@Api(tags = "用户相关")
 @EnableSwagger2
 public class AccountController {
 
@@ -55,6 +55,7 @@ public class AccountController {
             String newPassword = "";
             newPassword = RSAEncrypt.decrypt(password);
             newPassword = Common.getMD5Str(newPassword);
+            System.out.println(newPassword);
             Account account = accountService.login(username, newPassword);
             if(account == null){
                 return MessageOut.failed(-1, "用户名或密码错误");

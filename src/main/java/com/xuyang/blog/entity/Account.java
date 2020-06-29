@@ -11,7 +11,7 @@ public class Account {
     private String isDel;
     private String isDisable;
     private String errCount;
-    private String usePwd;
+    private String usedPwd;
     private String lastUpdateTime;
     private String lockTime;
 
@@ -81,12 +81,12 @@ public class Account {
         this.errCount = errCount;
     }
 
-    public String getUsePwd() {
-        return usePwd;
+    public String getUsedPwd() {
+        return usedPwd;
     }
 
-    public void setUsePwd(String usePwd) {
-        this.usePwd = usePwd;
+    public void setUsedPwd(String usedPwd) {
+        this.usedPwd = usedPwd;
     }
 
     public String getLastUpdateTime() {

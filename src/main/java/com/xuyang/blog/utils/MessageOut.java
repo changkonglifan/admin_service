@@ -47,6 +47,9 @@ public class MessageOut {
     public static JSONObject successful(){
         return output(1, "成功");
     }
+    public static JSONObject successful(String msg){
+        return output(1, msg);
+    }
 
     /**
      * 失败

@@ -11,8 +11,9 @@ public class AccountInfo {
     private String nickName;
     private String name;
     private String sex;
-    private String moblile;
-    private String autName;
+    private String mobile;
+
+    private String authName;
     private String authRange;
     private String avatar;
     private String isDel;
@@ -21,6 +22,15 @@ public class AccountInfo {
     private String introduction;
     private String createTime;
     private String modifyTime;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getUuid() {
         return uuid;
@@ -62,21 +72,22 @@ public class AccountInfo {
         this.sex = sex;
     }
 
-    public String getMoblile() {
-        return moblile;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMoblile(String moblile) {
-        this.moblile = moblile;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getAutName() {
-        return autName;
+    public String getAuthName() {
+        return authName;
     }
 
-    public void setAutName(String autName) {
-        this.autName = autName;
+    public void setAuthName(String authName) {
+        this.authName = authName;
     }
+
 
     public String getAuthRange() {
         return authRange;
