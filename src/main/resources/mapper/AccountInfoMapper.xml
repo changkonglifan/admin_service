@@ -37,4 +37,11 @@
     <delete id="deleteByUuid">
         delete from account_info where uuid=#{uuid}
     </delete>
+    <select id="getAllAccount" resultMap="BaseResultMap">
+        select * from account_info
+    </select>
+    <update id="updateAccount" parameterType="com.xuyang.blog.entity.AccountInfo">
+        update account_info set nickName=#{nickName}, name=#{name},sex=#{sex},mobile=#{mobile}, email=#{email},auth_name=#{authName}, authRange=#{authRange},avatar=#{avatar},is_del=#{isDel},level=#{level},job=#{job},intraoduction_of_author=#{introduction},modify_time=now()
+        where uuid=#{uuid}
+    </update>
 </mapper>

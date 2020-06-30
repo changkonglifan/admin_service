@@ -60,5 +60,10 @@ public class MessageOut {
     public static JSONObject failed(int code, String msg){return output(code, msg);}
     public static JSONObject failed(int code, String msg, Object object){return output(code, msg, object);}
 
+    /**
+     * 登录已过期
+     * @return
+     */
+    public static JSONObject sessionOut(){return output(-101,"登录已过期");}
 }
 
