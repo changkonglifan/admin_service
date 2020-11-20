@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,7 +30,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping(value = "/admin/user")
-@Api(tags = "用户管理")
+@Api(tags = "后台用户管理")
 public class AdminAccountController {
 
     @Autowired
@@ -208,6 +209,48 @@ public class AdminAccountController {
             return MessageOut.successful(js);
         }catch (Exception e){
             return MessageOut.successful();
+        }
+    }
+
+    /**
+     * 登录
+     * @param request
+     * @return
+     */
+
+    @ApiOperation(value = "登录", notes = "登录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="form", dataType = "String", value = "用户名", name = "username", required = true),
+            @ApiImplicitParam(paramType="form", dataType = "String", value = "密码", name = "password", required = true)
+    })
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject login(
+            HttpServletRequest request,
+            String username,
+            String password
+    ) {
+        System.out.println(username);
+        JSONObject js = new JSONObject();
+        try{
+            String newPassword = "";
+            newPassword = RSAEncrypt.decrypt(password);
+            newPassword = Common.getMD5Str(newPassword);
+            System.out.println(newPassword);
+            Account account = accountService.login(username, newPassword);
+            if(account == null){
+                return MessageOut.failed(-1, "用户名或密码错误");
+            }
+            if(account.getIsDel() == "1"){
+                return MessageOut.failed(-2, "当前用户已删除");
+            }
+            AccountInfo accountInfo = accountInfoService.getAccountInfoByUuid(account.getUuid());
+            HttpSession session = request.getSession(true);
+            session.setAttribute("userinfo", account);
+            js.put("account", accountInfo);
+            return MessageOut.successful(js);
+        }catch (Exception e){
+            return MessageOut.failed(-3, e.getMessage());
         }
     }
 }
