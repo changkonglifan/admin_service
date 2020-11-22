@@ -199,7 +199,7 @@ public class AdminAccountController {
         HttpServletRequest request
     ){
         try{
-            Account account = (Account) request.getSession().getAttribute("userinfo");
+            Account account = (Account) request.getSession().getAttribute("user");
             if(account == null){
                 return MessageOut.sessionOut();
             }
@@ -235,7 +235,7 @@ public class AdminAccountController {
         try{
             String newPassword = "";
             newPassword = RSAEncrypt.decrypt(password);
-            newPassword = Common.getMD5Str(newPassword);
+            newPassword = Common.getMD5Str(newPassword).toUpperCase();
             System.out.println(newPassword);
             Account account = accountService.login(username, newPassword);
             if(account == null){
@@ -246,7 +246,7 @@ public class AdminAccountController {
             }
             AccountInfo accountInfo = accountInfoService.getAccountInfoByUuid(account.getUuid());
             HttpSession session = request.getSession(true);
-            session.setAttribute("userinfo", account);
+            session.setAttribute("user", account);
             js.put("account", accountInfo);
             return MessageOut.successful(js);
         }catch (Exception e){

@@ -19,10 +19,10 @@ public class RSAEncrypt {
     private static String privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIbgvA/sBwx1GxyN/iMvwl203/er+lexkQR+Tu0Id1GJ/Mon8n5h2n3MGldydj8+3B0DR3uqPMMtlMa0xtayGkoD9Pv8FxZZpvkNsO1sSk7IcPuE71YQ8xv/Rpef6E1ZIsWvTAm2GXVI2D5cYj+QJKBpLc85yeboK3wKk+GXBlmLAgMBAAECgYA4JLQjrIwCk3yFllWDMA4oE3JnFh9PAYrr4+fWov+H4Xhobdhy4yif1KXiYLL4AKJ/MS5AO8yvMfoL/JQIKnrmVjYroHNI9uQhmRMIVzWkoJ/CF0DY2BtFU93nMRXC30QpuR5rWfedKg4evBU7YGT2jgCpOatuwaJVim5FR1ukgQJBAOWDpDJ7JEhaaD/my1QJT9ft2XEQ8ZJIyfREv4wNTZz66+sWFPhBXYJEjIER8e+7BJl2ZtFpIeYeyawAxtySbM0CQQCWcVNfA+ipuaR/0e1ygsyU4bM0H2e2yBLW4EHwv+940u72bvhEMpB6WME53mwNt1HC4uHt9vy9bB9n/4NT5N+3AkEAhVOms+iTGDDktJJm9Yd/SWmTUjpMivUb1HmHaF1mA9ZD7Enknp6iKoWVtXjuOZxDvL5qViYjmiGyd+fvnby11QJAU4s3Syp2h9pJ2ZmQjOjKB1uXErjl9YEBxUXgGHvd1nD8tulFAUo7JVYoZ6R2yN8mjl1ELcvc6qwifLROD8an3QJAEPgvqwbTmGvpAqEk5GjN41YPigOZNpQEbe52I3/LYZc4LyQysEpomWtSrzGOQct4ub0yFYZqSMkclBXQbncIzQ==";//私钥
 
     public static void main(String args[]) throws Exception {
-        String password = "123456";
-        System.out.println(encrypt(password));
+//        String password = "123456";
+//        System.out.println(encrypt(password));
         try{
-            String n = "f2D0itW5q8XndGMmUJCXfNJD+QB2ZCxGQb3BE/Fd+BuS6tiJEsxWgEMuduubh9F5ZUCiDETDQiDeAiOarvoUajimDfRaaFJe3LfmxHYdJJAOJeL01V+Wem/44cWVQXF/ZBDtFSSB5Wfm+QWLDqNrk05AXPuLoCiTsba2YtMtBmE=";
+            String n = "EsiaM8Ez4grcfr+xLrregmV0pcAIaeszxx6grZrtY4e1OFqF+DqZz9mEstXt16lhp1Rxgd6QD1kbXE3oUw+DtAWCwHVPbYmFgF8X5Q4REOuuYOsAzXV0bnZX/KeWfXvC5xXxJt66+DeYcPbUED1+E9Gb7V5LCve+pXFmPvs7nxU=";
             System.out.println(decrypt(n));
         } catch (Exception e){
             System.out.println(e.getMessage());

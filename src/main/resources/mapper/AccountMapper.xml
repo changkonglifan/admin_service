@@ -6,7 +6,7 @@
     <!-- Result Map-->
     <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.Account">
         <result column="uuid"  jdbcType="VARCHAR" property="uuid"/>
-        <result column="username" jdbcType="VARCHAR" property="password"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="is_del" jdbcType="VARCHAR" property="isDel"/>
         <result column="isDisable" jdbcType="VARCHAR" property="isDisable"/>
