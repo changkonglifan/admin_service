@@ -29,7 +29,10 @@
             #{uuid},#{username},#{password},#{isDel},#{isDisable},#{errCount},#{usedPwd}, now(), now(), now()
         )
     </insert>
-    <update id="deleteByUuid">
-        update account_info set is_del=1 where uuid=#{uuid}
+    <update id="deleteByUuid"  parameterType="com.xuyang.blog.entity.Account">
+        update account set is_del=1 where uuid=#{uuid}
+    </update>
+    <update id="updatePassword"  parameterType="com.xuyang.blog.entity.Account">
+        update account set password=#{password}, modify_time = now() where uuid=#{uuid}
     </update>
 </mapper>

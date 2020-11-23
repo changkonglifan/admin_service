@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyang.blog.dao.OpLogsMapper" >
+    <!-- Result Map-->
+    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.OpLogs">
+        <result column="userUuid" jdbcType="VARCHAR" property="userUuid"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="detail" jdbcType="VARCHAR" property="detail"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    </resultMap>
+    <select id="getAllLogs" resultType="com.xuyang.blog.entity.OpLogs">
+        select * from opLogs where 1 = 1
+        <if test="username != null and username !='' ">
+            and username like '%'||#{username,jdbcType=VARCHAR}||'%'
+        </if>
+        <if test="startTime != null and startTime !='' ">
+            <![CDATA[
+                and create_time >= #{startTime}
+            ]]>
+        </if>
+        <if test="endTime != null and endTime !='' ">
+            <![CDATA[
+                and create_time <= #{endTime}
+            ]]>
+        </if>
+    </select>
+    <insert id="addLogs" parameterType="com.xuyang.blog.entity.OpLogs">
+       insert into opLogs( userUuid, username, detail, create_time)
+       values ( #{userUuid}, #{username}, #{detail}, now())
+    </insert>
+</mapper>

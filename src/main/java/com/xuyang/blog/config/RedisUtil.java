@@ -75,7 +75,10 @@ public class RedisUtil {
      * @return
      */
     public boolean exists(final String key) {
-        return redisTemplate.hasKey(key);
+        if(key == null || key.isEmpty() ){
+            return false;
+        }
+        return  redisTemplate.hasKey(key);
     }
     /**
      * 读取缓存

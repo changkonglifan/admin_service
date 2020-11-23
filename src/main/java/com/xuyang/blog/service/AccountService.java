@@ -25,4 +25,6 @@ public class AccountService {
     public Integer addUser(Account account){return accountMapper.addUser(account);};
 
     public Integer deleteByUuid(String uuid) {return accountMapper.deleteByUuid(uuid);}
+
+    public Integer updatePassword(String password, String uuid){return accountMapper.updatePassword(password, uuid);}
 }

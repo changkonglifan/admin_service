@@ -1,0 +1,167 @@
+2020-11-24 00:02:20.696  INFO 24660 --- [main] com.xuyang.blog.BlogApplication          : Starting BlogApplication on Caicai-PC with PID 24660 (D:\work\myproject\myBlog\blog_service\target\classes started by xy in D:\work\myproject\myBlog\blog_service)
+2020-11-24 00:02:20.704  INFO 24660 --- [main] com.xuyang.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2020-11-24 00:02:21.644  INFO 24660 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 00:02:21.647  INFO 24660 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-24 00:02:21.675  INFO 24660 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 repository interfaces.
+2020-11-24 00:02:21.920  INFO 24660 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f69b89bb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 00:02:22.122  INFO 24660 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-24 00:02:22.140  INFO 24660 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 00:02:22.141  INFO 24660 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-24 00:02:22.146  INFO 24660 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.24] using APR version [1.7.0].
+2020-11-24 00:02:22.146  INFO 24660 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-11-24 00:02:22.146  INFO 24660 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-11-24 00:02:22.148  INFO 24660 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2020-11-24 00:02:22.230  INFO 24660 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 00:02:22.231  INFO 24660 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1471 ms
+2020-11-24 00:02:22.705  INFO 24660 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.blog.controller.Admin.AdminAccountController.logger
+2020-11-24 00:02:23.015  INFO 24660 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-24 00:02:23.117  INFO 24660 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 00:02:23.335  INFO 24660 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 00:02:23.346  INFO 24660 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 00:02:23.371  INFO 24660 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 00:02:23.473  INFO 24660 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-24 00:02:23.514  INFO 24660 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-24 00:02:23.517  INFO 24660 --- [main] com.xuyang.blog.BlogApplication          : Started BlogApplication in 3.108 seconds (JVM running for 3.803)
+2020-11-24 00:02:42.480  INFO 24660 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 00:02:42.480  INFO 24660 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 00:02:42.487  INFO 24660 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-11-24 00:02:42.676  INFO 24660 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-11-24 00:02:42.678  INFO 24660 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2020-11-24 00:02:43.171  INFO 24660 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-24 00:02:43.604  INFO 24660 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-24 00:04:17.747  INFO 10852 --- [main] com.xuyang.blog.BlogApplication          : Starting BlogApplication on Caicai-PC with PID 10852 (D:\work\myproject\myBlog\blog_service\target\classes started by xy in D:\work\myproject\myBlog\blog_service)
+2020-11-24 00:04:17.750  INFO 10852 --- [main] com.xuyang.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2020-11-24 00:04:18.795  INFO 10852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 00:04:18.798  INFO 10852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-24 00:04:18.827  INFO 10852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 0 repository interfaces.
+2020-11-24 00:04:19.104  INFO 10852 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ed94ef0c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 00:04:19.300  INFO 10852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-24 00:04:19.318  INFO 10852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 00:04:19.318  INFO 10852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-24 00:04:19.324  INFO 10852 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.24] using APR version [1.7.0].
+2020-11-24 00:04:19.324  INFO 10852 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-11-24 00:04:19.324  INFO 10852 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-11-24 00:04:19.326  INFO 10852 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2020-11-24 00:04:19.414  INFO 10852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 00:04:19.414  INFO 10852 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1615 ms
+2020-11-24 00:04:19.959  INFO 10852 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.blog.controller.Admin.AdminAccountController.logger
+2020-11-24 00:04:20.274  INFO 10852 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-24 00:04:20.426  INFO 10852 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 00:04:20.751  INFO 10852 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 00:04:20.765  INFO 10852 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 00:04:20.806  INFO 10852 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 00:04:20.956  INFO 10852 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-24 00:04:21.004  INFO 10852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-24 00:04:21.007  INFO 10852 --- [main] com.xuyang.blog.BlogApplication          : Started BlogApplication in 3.554 seconds (JVM running for 4.245)
+2020-11-24 00:04:21.086  INFO 10852 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 00:04:21.086  INFO 10852 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 00:04:21.091  INFO 10852 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-11-24 00:04:21.215  INFO 10852 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-11-24 00:04:21.217  INFO 10852 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2020-11-24 00:04:21.655  INFO 10852 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-24 00:04:22.127  INFO 10852 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-24 00:04:41.340 ERROR 10852 --- [http-nio-8008-exec-2] c.x.b.c.Admin.AdminAccountController     : nested exception is org.apache.ibatis.binding.BindingException: Parameter 'passowrd' not found. Available parameters are [password, uuid, param1, param2]
+2020-11-24 00:06:42.253  INFO 15576 --- [main] com.xuyang.blog.BlogApplication          : Starting BlogApplication on Caicai-PC with PID 15576 (D:\work\myproject\myBlog\blog_service\target\classes started by xy in D:\work\myproject\myBlog\blog_service)
+2020-11-24 00:06:42.258  INFO 15576 --- [main] com.xuyang.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2020-11-24 00:06:43.132  INFO 15576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 00:06:43.134  INFO 15576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-24 00:06:43.158  INFO 15576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2020-11-24 00:06:43.387  INFO 15576 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$342c47e9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 00:06:43.581  INFO 15576 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-24 00:06:43.598  INFO 15576 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 00:06:43.598  INFO 15576 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-24 00:06:43.603  INFO 15576 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.24] using APR version [1.7.0].
+2020-11-24 00:06:43.604  INFO 15576 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-11-24 00:06:43.604  INFO 15576 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-11-24 00:06:43.606  INFO 15576 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2020-11-24 00:06:43.685  INFO 15576 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 00:06:43.685  INFO 15576 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1376 ms
+2020-11-24 00:06:44.129  INFO 15576 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.blog.controller.Admin.AdminAccountController.logger
+2020-11-24 00:06:44.369  INFO 15576 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-24 00:06:44.469  INFO 15576 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 00:06:44.678  INFO 15576 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 00:06:44.689  INFO 15576 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 00:06:44.712  INFO 15576 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 00:06:44.810  INFO 15576 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-24 00:06:44.848  INFO 15576 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-24 00:06:44.850  INFO 15576 --- [main] com.xuyang.blog.BlogApplication          : Started BlogApplication in 2.881 seconds (JVM running for 3.51)
+2020-11-24 00:07:23.663  INFO 15576 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 00:07:23.663  INFO 15576 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 00:07:23.670  INFO 15576 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-11-24 00:07:23.817  INFO 15576 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-11-24 00:07:23.818  INFO 15576 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2020-11-24 00:07:24.325  INFO 15576 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-24 00:07:24.782  INFO 15576 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-24 00:07:27.091 ERROR 15576 --- [http-nio-8008-exec-2] c.x.b.c.Admin.AdminAccountController     : nested exception is org.apache.ibatis.binding.BindingException: Parameter 'passowrd' not found. Available parameters are [password, uuid, param1, param2]
+2020-11-24 00:07:43.269  INFO 9716 --- [main] com.xuyang.blog.BlogApplication          : Starting BlogApplication on Caicai-PC with PID 9716 (D:\work\myproject\myBlog\blog_service\target\classes started by xy in D:\work\myproject\myBlog\blog_service)
+2020-11-24 00:07:43.272  INFO 9716 --- [main] com.xuyang.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2020-11-24 00:07:44.132  INFO 9716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 00:07:44.134  INFO 9716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-24 00:07:44.159  INFO 9716 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2020-11-24 00:07:44.391  INFO 9716 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fb23ca8d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 00:07:44.582  INFO 9716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-24 00:07:44.598  INFO 9716 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 00:07:44.599  INFO 9716 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-24 00:07:44.604  INFO 9716 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.24] using APR version [1.7.0].
+2020-11-24 00:07:44.604  INFO 9716 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-11-24 00:07:44.604  INFO 9716 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-11-24 00:07:44.606  INFO 9716 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2020-11-24 00:07:44.687  INFO 9716 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 00:07:44.687  INFO 9716 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1367 ms
+2020-11-24 00:07:45.144  INFO 9716 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.blog.controller.Admin.AdminAccountController.logger
+2020-11-24 00:07:45.381  INFO 9716 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-24 00:07:45.485  INFO 9716 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 00:07:45.698  INFO 9716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 00:07:45.707  INFO 9716 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 00:07:45.731  INFO 9716 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 00:07:45.833  INFO 9716 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-24 00:07:45.871  INFO 9716 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-24 00:07:45.874  INFO 9716 --- [main] com.xuyang.blog.BlogApplication          : Started BlogApplication in 2.886 seconds (JVM running for 3.523)
+2020-11-24 00:08:29.178  INFO 9716 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 00:08:29.179  INFO 9716 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 00:08:29.187  INFO 9716 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-11-24 00:08:29.307  INFO 9716 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-11-24 00:08:29.308  INFO 9716 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2020-11-24 00:08:29.715  INFO 9716 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-24 00:08:30.154  INFO 9716 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-24 00:08:30.214  INFO 9716 --- [http-nio-8008-exec-1] c.x.b.c.Admin.AdminAccountController     : null重置密码
+2020-11-24 00:08:30.265 ERROR 9716 --- [http-nio-8008-exec-1] c.x.b.c.Admin.AdminAccountController     : 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'username' cannot be null
+### The error may involve com.xuyang.blog.dao.OpLogsMapper.addLogs-Inline
+### The error occurred while setting parameters
+### SQL: insert into opLogs( userUuid, username, detail, create_time)        values ( ?, ?, ?, now())
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'username' cannot be null
+; Column 'username' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'username' cannot be null
+2020-11-24 00:09:29.918  INFO 18320 --- [main] com.xuyang.blog.BlogApplication          : Starting BlogApplication on Caicai-PC with PID 18320 (D:\work\myproject\myBlog\blog_service\target\classes started by xy in D:\work\myproject\myBlog\blog_service)
+2020-11-24 00:09:29.922  INFO 18320 --- [main] com.xuyang.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2020-11-24 00:09:30.816  INFO 18320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-24 00:09:30.818  INFO 18320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-24 00:09:30.843  INFO 18320 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2020-11-24 00:09:31.075  INFO 18320 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3ed7fc27] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-24 00:09:31.264  INFO 18320 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-24 00:09:31.281  INFO 18320 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-24 00:09:31.282  INFO 18320 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-24 00:09:31.287  INFO 18320 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.24] using APR version [1.7.0].
+2020-11-24 00:09:31.287  INFO 18320 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-11-24 00:09:31.287  INFO 18320 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-11-24 00:09:31.289  INFO 18320 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2020-11-24 00:09:31.369  INFO 18320 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-24 00:09:31.369  INFO 18320 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1401 ms
+2020-11-24 00:09:31.814  INFO 18320 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.blog.controller.Admin.AdminAccountController.logger
+2020-11-24 00:09:32.049  INFO 18320 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-24 00:09:32.150  INFO 18320 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-24 00:09:32.359  INFO 18320 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-24 00:09:32.370  INFO 18320 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-24 00:09:32.395  INFO 18320 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-24 00:09:32.492  INFO 18320 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-24 00:09:32.529  INFO 18320 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-24 00:09:32.531  INFO 18320 --- [main] com.xuyang.blog.BlogApplication          : Started BlogApplication in 2.91 seconds (JVM running for 3.515)
+2020-11-24 00:09:48.244  INFO 18320 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-24 00:09:48.244  INFO 18320 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-24 00:09:48.251  INFO 18320 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-11-24 00:09:48.364  INFO 18320 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-11-24 00:09:48.365  INFO 18320 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2020-11-24 00:09:48.758  INFO 18320 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-24 00:09:49.169  INFO 18320 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-24 00:09:49.216  INFO 18320 --- [http-nio-8008-exec-1] c.x.b.c.Admin.AdminAccountController     : admin重置密码
+2020-11-24 00:09:51.372  INFO 18320 --- [http-nio-8008-exec-2] c.x.b.c.Admin.AdminAccountController     : admin重置密码

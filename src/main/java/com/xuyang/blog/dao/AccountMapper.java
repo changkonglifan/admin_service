@@ -13,4 +13,6 @@ public interface AccountMapper {
     Integer addUser(Account account);
 
     Integer deleteByUuid(String uuid);
+
+    Integer updatePassword(String password, String uuid);
 }
