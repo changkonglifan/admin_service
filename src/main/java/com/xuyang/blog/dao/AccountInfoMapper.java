@@ -21,5 +21,9 @@ public interface AccountInfoMapper {
 
     List<AccountInfo> getAllAccount();
 
+    List<AccountInfo> getAllAccountByParams(String username, String name, String mobile,String isDel,  String authName, Integer pageBefore, Integer pageSize);
+
+    Integer getAccountTotal(String username, String name, String mobile, String authName, String isDel);
+
     Integer updateAccount(AccountInfo accountInfo);
 }

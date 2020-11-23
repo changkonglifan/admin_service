@@ -1,10 +1,12 @@
 package com.xuyang.blog.controller.Admin;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xuyang.blog.config.RedisUtil;
 import com.xuyang.blog.entity.Account;
 import com.xuyang.blog.entity.AccountInfo;
 import com.xuyang.blog.service.AccountInfoService;
 import com.xuyang.blog.service.AccountService;
+import com.xuyang.blog.service.TokenService;
 import com.xuyang.blog.utils.Common;
 import com.xuyang.blog.utils.MessageOut;
 import com.xuyang.blog.utils.RSAEncrypt;
@@ -13,13 +15,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +29,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "/admin/user")
 @Api(tags = "后台用户管理")
+@CrossOrigin
 public class AdminAccountController {
 
     @Autowired
@@ -39,6 +38,13 @@ public class AdminAccountController {
     @Autowired
     private AccountInfoService accountInfoService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
+    @Autowired
+    private TokenService tokenService;
+
+    private  Long expireTime = (long) 24 * 60 * 60;
 
     @ApiOperation(value = "新增用户", notes = "新增用户")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -51,30 +57,29 @@ public class AdminAccountController {
             @ApiImplicitParam(paramType = "form", name = "name", value = "姓名", dataType = "String", required = true),
             @ApiImplicitParam(paramType = "form", name = "mobile", value = "手机", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "authName", value = "用户类型", dataType = "String", required = true),
-            @ApiImplicitParam(paramType = "form", name = "authRange", value = "权限范围", dataType = "String", required = false),
-            @ApiImplicitParam(paramType = "form", name = "avatar", value = "头像地址", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "job", value = "职业", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "introduction", value = "介绍", dataType = "String", required = false),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
     })
     @ResponseBody
     public JSONObject addUser(
         HttpServletRequest request,
         String username,
-        String password,
         String nickName,
         String sex,
         String name,
         String mobile,
         String email,
         String authName,
-        String authRange,
-        String avatar,
         String job,
-        String introduction
+        String introduction,
+        String token
     ){
         try{
-            Account aa = (Account) request.getSession().getAttribute("userinfo");
-            if(aa == null){
+
+            String tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS.isEmpty()){
+                // token失效
                 return MessageOut.sessionOut();
             }
             //  新增用户， 判断用户username 是否重复
@@ -82,7 +87,8 @@ public class AdminAccountController {
             if(accountRes != null){
                 return MessageOut.failed(-3, "当前用户已存在");
             }
-            String newPassword = RSAEncrypt.decrypt(password);
+            // 默认密码
+            String newPassword = "123456";
             if(newPassword.length() < 6){
                 return MessageOut.failed(-4, "密码长度不符合规范");
             }
@@ -132,8 +138,6 @@ public class AdminAccountController {
     @ApiOperation(value = "修改用户", notes = "修改用户")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ApiImplicitParams({
-//            @ApiImplicitParam(paramType = "form", name = "username", value = "用户名", dataType = "String", required = true),
-//            @ApiImplicitParam(paramType = "form", name = "password", value = "密码", dataType = "String", required = true),
             @ApiImplicitParam(paramType = "form", name = "uuid", value = "id", dataType = "String", required = true),
             @ApiImplicitParam(paramType = "form", name = "nickName", value = "昵称", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "email", value = "邮箱", dataType = "String", required = false),
@@ -141,10 +145,9 @@ public class AdminAccountController {
             @ApiImplicitParam(paramType = "form", name = "name", value = "姓名", dataType = "String", required = true),
             @ApiImplicitParam(paramType = "form", name = "mobile", value = "手机", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "authName", value = "用户类型", dataType = "String", required = true),
-            @ApiImplicitParam(paramType = "form", name = "authRange", value = "权限范围", dataType = "String", required = false),
-            @ApiImplicitParam(paramType = "form", name = "avatar", value = "头像地址", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "job", value = "职业", dataType = "String", required = false),
             @ApiImplicitParam(paramType = "form", name = "introduction", value = "介绍", dataType = "String", required = false),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
     })
     @ResponseBody
     public JSONObject updateUser(
@@ -156,14 +159,15 @@ public class AdminAccountController {
             String mobile,
             String email,
             String authName,
-            String authRange,
-            String avatar,
             String job,
-            String introduction
+            String introduction,
+            String token
     ){
         try{
-            Account aa = (Account) request.getSession().getAttribute("userinfo");
-            if(aa == null){
+
+            String tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS.isEmpty()){
+                // token失效
                 return MessageOut.sessionOut();
             }
             AccountInfo accountInfo = new AccountInfo();
@@ -193,28 +197,50 @@ public class AdminAccountController {
      * 获取所有的用户列表
      * @return
      */
+    @ApiOperation(value = "获取所有用户", notes = "获取所有用户")
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @ApiImplicitParams({
+        @ApiImplicitParam(paramType = "query", name = "nickName", value = "昵称", dataType = "String", required = false),
+        @ApiImplicitParam(paramType = "query", name = "name", value = "姓名", dataType = "String", required = false),
+        @ApiImplicitParam(paramType = "query", name = "mobile", value = "手机", dataType = "String", required = false),
+        @ApiImplicitParam(paramType = "query", name = "isDel", value = "是否删除", dataType = "String", required = false),
+        @ApiImplicitParam(paramType = "query", name = "authName", value = "用户类型", dataType = "String", required = false),
+        @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
+        @ApiImplicitParam(paramType = "query", name = "page", value = "page", dataType = "String", required = true),
+        @ApiImplicitParam(paramType = "query", name = "pageSize", value = "pageSize", dataType = "String", required = true),
+     })
     @ResponseBody
     public JSONObject getAllUser(
-        HttpServletRequest request
+        String username,
+        String name,
+        String mobile,
+        String isDel,
+        String authName,
+        Integer page,
+        Integer pageSize,
+        String token
     ){
+        JSONObject js = new JSONObject();
         try{
-            Account account = (Account) request.getSession().getAttribute("user");
-            if(account == null){
+            String tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS.isEmpty()){
+                // token失效
                 return MessageOut.sessionOut();
             }
-            List<AccountInfo> accountList = accountInfoService.getAllAccount();
-            JSONObject js = new JSONObject();
+            int limitBefore = (page - 1) * pageSize;
+            List<AccountInfo> accountList = accountInfoService.getAllAccount(username, name, mobile, isDel, authName, limitBefore, pageSize);
             js.put("list", accountList);
+            js.put("page", page);
+            js.put("pageSize", pageSize);
+            js.put("totalRecord", accountInfoService.getAccountTotal(username, name, mobile, authName, isDel));
             return MessageOut.successful(js);
         }catch (Exception e){
-            return MessageOut.successful();
+            return MessageOut.failed(-1, e.getMessage());
         }
     }
 
     /**
      * 登录
-     * @param request
      * @return
      */
 
@@ -226,17 +252,14 @@ public class AdminAccountController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     JSONObject login(
-            HttpServletRequest request,
             String username,
             String password
     ) {
-        System.out.println(username);
         JSONObject js = new JSONObject();
         try{
             String newPassword = "";
             newPassword = RSAEncrypt.decrypt(password);
             newPassword = Common.getMD5Str(newPassword).toUpperCase();
-            System.out.println(newPassword);
             Account account = accountService.login(username, newPassword);
             if(account == null){
                 return MessageOut.failed(-1, "用户名或密码错误");
@@ -245,12 +268,52 @@ public class AdminAccountController {
                 return MessageOut.failed(-2, "当前用户已删除");
             }
             AccountInfo accountInfo = accountInfoService.getAccountInfoByUuid(account.getUuid());
-            HttpSession session = request.getSession(true);
-            session.setAttribute("user", account);
+            String uuid = UUID.randomUUID().toString();
+//            生成uuid写入redis
+            redisUtil.set(uuid, account.getUuid(), expireTime);
+            System.out.println(redisUtil.get(uuid));
             js.put("account", accountInfo);
+            js.put("token", uuid);
+
             return MessageOut.successful(js);
         }catch (Exception e){
             return MessageOut.failed(-3, e.getMessage());
+        }
+    }
+
+    /**
+     * 删除
+     * @return
+     */
+
+    @ApiOperation(value = "删除", notes = "删除")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query", dataType = "String", value = "uuid", name = "uuid", required = true),
+            @ApiImplicitParam(paramType="query", dataType = "String", value = "token", name = "token", required = true)
+    })
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @ResponseBody
+    JSONObject deleteUse(
+            HttpServletRequest request,
+            String uuid,
+            String token
+    ){
+        JSONObject js = new JSONObject();
+        try{
+            String tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS.isEmpty()){
+                // token失效
+                return MessageOut.sessionOut();
+            }
+            Integer result = accountInfoService.deleteByUuid(uuid);
+            Integer aResult = accountService.deleteByUuid(uuid);
+            if(result > 0 && aResult > 0){
+                return MessageOut.successful("删除成功");
+            }else {
+                return MessageOut.failed(-1, "删除失败");
+            }
+        }catch (Exception e){
+            return MessageOut.failed(-1, e.getMessage());
         }
     }
 }

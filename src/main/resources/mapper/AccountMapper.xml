@@ -29,7 +29,7 @@
             #{uuid},#{username},#{password},#{isDel},#{isDisable},#{errCount},#{usedPwd}, now(), now(), now()
         )
     </insert>
-    <delete id="deleteByUuid">
-        delete from account_info where uuid=#{uuid}
-    </delete>
+    <update id="deleteByUuid">
+        update account_info set is_del=1 where uuid=#{uuid}
+    </update>
 </mapper>

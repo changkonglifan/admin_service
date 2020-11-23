@@ -15,7 +15,7 @@
         <result column="auth_range" property="authRange" jdbcType="VARCHAR"/>
         <result column="auth_name" property="authName" jdbcType="CHAR"/>
         <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
-        <result column="is_del" property="isDel" jdbcType="CHAR"/>
+        <result column="is_del" jdbcType="CHAR" property="isDel"/>
         <result column="level"  jdbcType="CHAR" property="level"/>
         <result column="job" jdbcType="VARCHAR" property="job"/>
         <result column="introduction_of_author" property="introduction" jdbcType="VARCHAR"/>
@@ -23,25 +23,66 @@
         <result column="modify_time" property="modifyTime" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="getAccountInfo" resultType="com.xuyang.blog.entity.AccountInfo">
-        select username, nickName, name, sex, mobile, email, auth_name as authName, auth_range as authRange, avatar, is_del as isDel,
+        select uuid,username, nickName, name, sex, mobile, email, auth_name as authName, auth_range as authRange, avatar, is_del as isDel,
          level,job, introduction_of_author as introduction, create_time as creaateTime, modify_time as modifyTime from account_info where uuid=#{uuid}
     </select>
     <insert id="addUser" parameterType="com.xuyang.blog.entity.AccountInfo">
         insert into account_info(
-            uuid, username, nickName,name,sex,mobile,email,auth_range, auth_name,avatar, is_del, level, job, introduction_of_author,create_time,modify_time
+            uuid, username, nickName,name,sex,mobile,email,auth_name, is_del, level, job, introduction_of_author,create_time,modify_time
         )
         values (
-            #{uuid},#{username},#{nickName}, #{name}, #{sex}, #{mobile}, #{email}, #{authRange}, #{authName}, #{avatar},#{isDel},#{level},#{job}, #{introduction}, now(), now()
+            #{uuid},#{username},#{nickName}, #{name}, #{sex}, #{mobile}, #{email}, #{authName},#{isDel},#{level},#{job}, #{introduction}, now(), now()
         )
     </insert>
-    <delete id="deleteByUuid">
-        delete from account_info where uuid=#{uuid}
-    </delete>
+    <update id="deleteByUuid">
+        update account_info set is_del=1 where uuid=#{uuid}
+    </update>
     <select id="getAllAccount" resultMap="BaseResultMap">
         select * from account_info
     </select>
+    <select id="getAllAccountByParams" resultMap="BaseResultMap" parameterType="com.xuyang.blog.entity.AccountInfo">
+        select * from account_info
+        WHERE 1 = 1
+        <if test="username != null and username !='' ">
+            and username = #{username,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null and name !='' ">
+            and name  = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null and mobile !='' ">
+            <bind name="pattern" value="'%' + mobile + '%'" ></bind>
+            and mobile like  #{pattern}
+        </if>
+        <if test="authName != null and authName !='' ">
+            and auth_name =  #{authName}
+        </if>
+        <if test="isDel != null and isDel !='' ">
+            and is_del =  #{isDel}
+        </if>
+            limit #{pageBefore},#{pageSize}
+    </select>
     <update id="updateAccount" parameterType="com.xuyang.blog.entity.AccountInfo">
-        update account_info set nickName=#{nickName}, name=#{name},sex=#{sex},mobile=#{mobile}, email=#{email},auth_name=#{authName}, authRange=#{authRange},avatar=#{avatar},is_del=#{isDel},level=#{level},job=#{job},intraoduction_of_author=#{introduction},modify_time=now()
+        update account_info set nickName=#{nickName}, name=#{name},sex=#{sex},mobile=#{mobile}, email=#{email},auth_name=#{authName},is_del=#{isDel},level=#{level},job=#{job},introduction_of_author=#{introduction},modify_time=now()
         where uuid=#{uuid}
     </update>
+    <select id="getAccountTotal" resultType="java.lang.Integer" parameterType="com.xuyang.blog.entity.AccountInfo">
+        select count(*) as total from account_info
+        WHERE 1 = 1
+        <if test="username != null and username !='' ">
+            and username = #{username,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null and name !='' ">
+            and name  = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null and mobile !='' ">
+            <bind name="pattern" value="'%' + mobile + '%'" ></bind>
+            and mobile like  #{pattern}
+        </if>
+        <if test="authName != null and authName !='' ">
+            and auth_name =  #{authName}
+        </if>
+        <if test="isDel != null and isDel !='' ">
+            and is_del =  #{isDel}
+        </if>
+    </select>
 </mapper>

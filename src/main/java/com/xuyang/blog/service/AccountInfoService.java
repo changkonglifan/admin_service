@@ -30,5 +30,10 @@ public class AccountInfoService {
 
     public List<AccountInfo> getAllAccount(){return accountInfoMapper.getAllAccount();};
 
+    public List<AccountInfo> getAllAccount(String username, String name, String mobile,String isDel, String authName, Integer pageBefore, Integer pageSize){return accountInfoMapper.getAllAccountByParams(username, name, mobile, authName,isDel, pageBefore, pageSize);};
+
+    public Integer getAccountTotal(String username, String name, String mobile, String authName, String isDel){return accountInfoMapper.getAccountTotal(username, name, mobile, authName, isDel);}
+
+
     public Integer updateAccount(AccountInfo accountInfo){return accountInfoMapper.updateAccount(accountInfo);}
 }
