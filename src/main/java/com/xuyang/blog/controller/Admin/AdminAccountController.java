@@ -282,7 +282,7 @@ public class AdminAccountController {
                 return MessageOut.failed(-2, "当前用户已删除");
             }
             AccountInfo accountInfo = accountInfoService.getAccountInfoByUuid(account.getUuid());
-            if(accountInfo.getAuthName()  != "0"){
+            if(!"0".equals(accountInfo.getAuthName())){
                 return MessageOut.failed(-1, "您没有此系统权限");
             }
             String uuid = Constants.PC_ADMIN_TOKEN.concat(UUID.randomUUID().toString());
@@ -375,6 +375,82 @@ public class AdminAccountController {
             }else {
                 return MessageOut.failed(-1, "重置失败");
             }
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            return MessageOut.failed(-1, e.getMessage());
+        }
+    }
+
+    /**
+     * 删除
+     * @return
+     */
+
+    @ApiOperation(value = "退出登录", notes = "退出登录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query", dataType = "String", value = "token", name = "token", required = true)
+    })
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject logout(
+            String token
+    ){
+        try{
+            Object tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS == null){
+                // token失效
+                return MessageOut.sessionOut();
+            }
+            // 删除redis
+            redisUtil.remove(token);
+           return MessageOut.successful("退出成功");
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            return MessageOut.failed(-1, e.getMessage());
+        }
+    }
+
+    /**
+     * 修改密码
+     * @param token token
+     * @param password 原密码
+     * @param newPassword 新密码
+     * @return
+     */
+    @ApiOperation(value = "修改密码", notes = "修改密码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", dataType = "String", value = "token", name = "token", required = true),
+            @ApiImplicitParam(paramType = "query", dataType = "String", value = "password", name = "原密码", required = true),
+            @ApiImplicitParam(paramType = "query", dataType = "String", value = "newPassword", name = "新密码", required = true),
+    })
+    @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject changePassword(
+            String token,
+            String password,
+            String newPassword
+    ){
+        try{
+            Object tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS == null){
+                // token失效
+                return MessageOut.sessionOut();
+            }
+
+            Map accountToken = (Map) tokenJS;
+            // 密码解密 后 重新 加密
+            password = Common.getMD5Str(RSAEncrypt.decrypt(password)).toUpperCase();
+            newPassword = Common.getMD5Str(RSAEncrypt.decrypt(newPassword)).toUpperCase();
+            //验证原密码
+            Account account = accountService.getAccountByUUidAndPsw((String)accountToken.get("uuid"), password);
+            if(account == null){
+                return MessageOut.failed(-1,"原密码错误");
+            }
+            int result = accountService.updatePassword(newPassword, (String) accountToken.get("uuid"));
+            if(result > 0){
+                return MessageOut.successful("修改成功");
+            }
+            return MessageOut.failed(-1, "修改失败");
         }catch (Exception e){
             logger.error(e.getMessage());
             return MessageOut.failed(-1, e.getMessage());

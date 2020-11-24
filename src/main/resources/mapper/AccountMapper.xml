@@ -35,4 +35,7 @@
     <update id="updatePassword"  parameterType="com.xuyang.blog.entity.Account">
         update account set password=#{password}, modify_time = now() where uuid=#{uuid}
     </update>
+    <select id="getAccountByUUidAndPsw" parameterType="com.xuyang.blog.entity.Account" resultMap="BaseResultMap">
+        select * from account where uuid=#{uuid} and password=#{password} limit 1
+    </select>
 </mapper>

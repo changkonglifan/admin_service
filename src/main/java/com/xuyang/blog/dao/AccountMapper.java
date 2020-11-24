@@ -15,4 +15,6 @@ public interface AccountMapper {
     Integer deleteByUuid(String uuid);
 
     Integer updatePassword(String password, String uuid);
+
+    Account getAccountByUUidAndPsw(String uuid, String password);
 }
