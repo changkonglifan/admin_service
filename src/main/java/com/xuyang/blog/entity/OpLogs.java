@@ -8,6 +8,7 @@ public class OpLogs {
     private String userUuid;
     private String username;
     private String detail;
+    private String createTime;
 
     public Integer getId() {
         return id;
@@ -49,7 +50,6 @@ public class OpLogs {
         this.createTime = createTime;
     }
 
-    private String createTime;
 
 
 }

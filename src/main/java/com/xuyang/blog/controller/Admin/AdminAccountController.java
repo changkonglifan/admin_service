@@ -282,6 +282,9 @@ public class AdminAccountController {
                 return MessageOut.failed(-2, "当前用户已删除");
             }
             AccountInfo accountInfo = accountInfoService.getAccountInfoByUuid(account.getUuid());
+            if(accountInfo.getAuthName()  != "0"){
+                return MessageOut.failed(-1, "您没有此系统权限");
+            }
             String uuid = Constants.PC_ADMIN_TOKEN.concat(UUID.randomUUID().toString());
             JSONObject redisAccount = new JSONObject();
             redisAccount.put("uuid", accountInfo.getUuid());

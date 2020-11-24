@@ -18,7 +18,7 @@
         <result column="modify_time" jdbcType="VARCHAR" property="modifyTime"/>
     </resultMap>
     <select id="login" resultMap="BaseResultMap">
-        select * from account where username=#{username} and password=#{password}
+        select * from account where username=#{username} and password=#{password} and is_del = 0
     </select>
     <select id="getAccountByUsername" resultMap="BaseResultMap">
         select * from account where username=#{username}

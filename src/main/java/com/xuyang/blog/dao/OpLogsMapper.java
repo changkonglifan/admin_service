@@ -9,5 +9,7 @@ import java.util.List;
 public interface OpLogsMapper {
     int addLogs(String userUuid, String username, String detail);
 
-    List<OpLogs> getAllLogs(String username, String startTime, String endTime);
+    List<OpLogs> getAllLogs(String username, String startTime, String endTime, Integer pageBefore, Integer pageSize);
+
+    int getTotalRecord(String username, String startTime, String endTime);
 }
