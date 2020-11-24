@@ -2,6 +2,8 @@ package com.xuyang.blog.controller.Admin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.blog.entity.OpLogs;
+import com.xuyang.blog.excels.ExportExcelUtil;
+import com.xuyang.blog.excels.ExportExcelWrapper;
 import com.xuyang.blog.service.OpLogsService;
 import com.xuyang.blog.service.TokenService;
 import com.xuyang.blog.utils.MessageOut;
@@ -14,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -75,4 +78,65 @@ public class OpLogsController {
         }
     }
 
+    @ApiOperation(value = "导出日志",notes = "导出日志")
+    @RequestMapping(value = "/exportAll", method = RequestMethod.GET)
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String",required = true)
+    })
+    @ResponseBody
+    public void exportAllLogs (
+            String token,
+            HttpServletResponse response
+    ){
+        try{
+            Object tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS == null){
+                return;
+            }
+            // 导出
+            ExportExcelWrapper<OpLogs> util = new ExportExcelWrapper<OpLogs>();
+
+            List<OpLogs> list = opLogsService.getAllLogs(null, null, null, null,null);
+
+            String[] columns  = {"ID", "用户ID" ,"用户名","详情", "创建时间"};
+
+            util.exportExcel("logs", "日志", columns, list, response,ExportExcelUtil.EXCEl_FILE_2007);
+
+            logger.info("导出成功");
+        }catch (Exception e){
+        }
+    }
+
+
+    @ApiOperation(value = "导出选中",notes = "导出选中")
+    @RequestMapping(value = "/exportSelected", method = RequestMethod.GET)
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "ids", value = "选中ID", dataType = "String",required = true),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String",required = true)
+    })
+    @ResponseBody
+    public void exportSelected (
+            String ids,
+            String token,
+            HttpServletResponse response
+    ){
+        try{
+            Object tokenJS = tokenService.getTokenInfo(token);
+            if(tokenJS == null){
+                return;
+            }
+            // 导出
+            ExportExcelWrapper<OpLogs> util = new ExportExcelWrapper<OpLogs>();
+
+            String[] idList =  ids.split(",");
+            List<OpLogs> list = opLogsService.getLogsByIds(idList);
+            System.out.println(list);
+            String[] columns  = {"ID", "用户ID" ,"用户名","详情", "创建时间"};
+
+            util.exportExcel("logs", "日志", columns, list, response,ExportExcelUtil.EXCEl_FILE_2007);
+
+            logger.info("导出选中成功："+ ids);
+        }catch (Exception e){
+        }
+    }
 }

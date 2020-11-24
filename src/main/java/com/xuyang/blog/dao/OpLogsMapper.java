@@ -1,6 +1,7 @@
 package com.xuyang.blog.dao;
 
 import com.xuyang.blog.entity.OpLogs;
+import io.lettuce.core.dynamic.annotation.Param;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface OpLogsMapper {
     List<OpLogs> getAllLogs(String username, String startTime, String endTime, Integer pageBefore, Integer pageSize);
 
     int getTotalRecord(String username, String startTime, String endTime);
+
+    List<OpLogs> getLogsByIds(@Param("idList")String[] idList);
 }

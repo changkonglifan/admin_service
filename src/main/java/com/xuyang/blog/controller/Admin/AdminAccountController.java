@@ -1,7 +1,7 @@
 package com.xuyang.blog.controller.Admin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xuyang.blog.config.RedisUtil;
+import com.xuyang.blog.utils.RedisUtil;
 import com.xuyang.blog.constants.Constants;
 import com.xuyang.blog.entity.Account;
 import com.xuyang.blog.entity.AccountInfo;

@@ -1,4 +1,4 @@
-package com.xuyang.blog.config;
+package com.xuyang.blog.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;

@@ -1,7 +1,6 @@
 package com.xuyang.blog.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.xuyang.blog.config.RedisUtil;
+import com.xuyang.blog.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

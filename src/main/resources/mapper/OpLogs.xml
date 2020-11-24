@@ -5,6 +5,7 @@
 <mapper namespace="com.xuyang.blog.dao.OpLogsMapper" >
     <!-- Result Map-->
     <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.OpLogs">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
         <result column="userUuid" jdbcType="VARCHAR" property="userUuid"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="detail" jdbcType="VARCHAR" property="detail"/>
@@ -41,7 +42,20 @@
                 and create_time <= #{endTime}
             ]]>
         </if>
-        limit #{pageBefore},#{pageSize}
+
+        <if test="pageBefore != null and pageBefore !='' and pageSize != null and pageSize !='' ">
+            <![CDATA[
+               limit #{pageBefore},#{pageSize}
+            ]]>
+        </if>
+
+    </select>
+    <select id="getLogsByIds" resultMap="BaseResultMap">
+        select * from opLogs
+        where id in
+        <foreach collection="array" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </select>
     <insert id="addLogs" parameterType="com.xuyang.blog.entity.OpLogs">
        insert into opLogs( userUuid, username, detail, create_time)

@@ -20,4 +20,5 @@ public class OpLogsService {
 
     public int getTotalRecord(String username, String startTime, String endTime){return opLogsMapper.getTotalRecord(username, startTime, endTime);}
 
+    public List<OpLogs> getLogsByIds(String[] ids){return opLogsMapper.getLogsByIds(ids);}
 }
