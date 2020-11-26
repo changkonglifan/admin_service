@@ -1,5 +1,6 @@
 package com.xuyang.blog.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class Tags {
     private String createTime;
     private String updateTime;
 
-    List<Tags> children;
+    private  List<Tags> children = new ArrayList<Tags>();
 
     public List<Tags> getChildren() {
         return children;

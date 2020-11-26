@@ -2,7 +2,6 @@ package com.xuyang.blog.controller.Admin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.blog.entity.Tags;
-import com.xuyang.blog.entity.TagsTree;
 import com.xuyang.blog.service.TagsService;
 import com.xuyang.blog.service.TokenService;
 import com.xuyang.blog.utils.MessageOut;
@@ -68,14 +67,13 @@ public class TagsController {
      * @param list
      * @return
      */
-    private List<TagsTree> getTreeData(List<Tags> list) {
-        ArrayList<TagsTree> result = new ArrayList<TagsTree>();
+    private List<Tags> getTreeData(List<Tags> list) {
+        List<Tags> result = new ArrayList<>();
         for(Tags t : list){
             if("0".equals(t.getPid())){
-                TagsTree tt = new TagsTree();
-                tt.setTag(t);
-                tt.setChildren(getChildren(list, t));
-                result.add(tt);
+                List<Tags> children = getChildren(list, t);
+//               t.setChildren(children);
+               result.add(t);
             }
         }
         return  result;
@@ -88,7 +86,7 @@ public class TagsController {
     private List<Tags> getChildren(List<Tags> list, Tags tag) {
         ArrayList<Tags> result = new ArrayList<Tags>();
         for(Tags t : list){
-            if(t.getPid() == tag.getId()){
+            if(t.getPid().equals(tag.getId())){
                 result.add(t);
             }
         }
