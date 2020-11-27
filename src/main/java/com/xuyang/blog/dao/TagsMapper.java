@@ -13,4 +13,14 @@ import java.util.List;
 @Mapper
 public interface TagsMapper {
     List<Tags> getAllTags(String name);
+
+    Integer addTag(String pid, String name, String description);
+
+    Integer updateTag(String id,String name, String description, String count, String sort, String pid);
+
+    Tags getTagByName(String name, String id);
+
+    Tags getTagByName(String name);
+
+    Integer deleteTag(String id);
 }

@@ -21,4 +21,14 @@ public class TagsService {
 
 
     public List<Tags> getAllTags(String name){return tagsMapper.getAllTags(name);}
+
+    public Integer addTag(String pid, String name,String description){return tagsMapper.addTag(pid, name, description);}
+
+    public Integer updateTag(String id, String name,String description,String count, String sort, String pid){return tagsMapper.updateTag(id, name, description, count, sort, pid);}
+
+    public Tags getTagsByName(String name){return tagsMapper.getTagByName(name);}
+
+    public Tags getTagsByName(String name, String id){return tagsMapper.getTagByName(name, id);}
+
+    public Integer deleteTag(String id){return tagsMapper.deleteTag(id);}
 }

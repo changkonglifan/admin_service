@@ -12,11 +12,32 @@ public class Tags {
     private String id;
     private String pid;
     private String name;
+    private String parentName;
     private String count;
     private String icon;
     private String sort;
+    private String description;
+
+
     private String createTime;
     private String updateTime;
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
 
     private  List<Tags> children = new ArrayList<Tags>();
 
