@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xuyang.blog.dao.AccountMapper" >
+<mapper namespace="com.xuyang.admin.dao.AccountMapper" >
     <!-- Result Map-->
-    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.Account">
+    <resultMap id="BaseResultMap" type="com.xuyang.admin.entity.Account">
         <result column="uuid"  jdbcType="VARCHAR" property="uuid"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
@@ -23,19 +23,19 @@
     <select id="getAccountByUsername" resultMap="BaseResultMap">
         select * from account where username=#{username}
     </select>
-    <insert id="addUser" parameterType="com.xuyang.blog.entity.Account">
+    <insert id="addUser" parameterType="com.xuyang.admin.entity.Account">
         insert into account(uuid, username, password, is_del, isDisable, errCount, usedPwd, create_time, lastUpdatetime, modify_time)
         values (
             #{uuid},#{username},#{password},#{isDel},#{isDisable},#{errCount},#{usedPwd}, now(), now(), now()
         )
     </insert>
-    <update id="deleteByUuid"  parameterType="com.xuyang.blog.entity.Account">
+    <update id="deleteByUuid"  parameterType="com.xuyang.admin.entity.Account">
         update account set is_del=1 where uuid=#{uuid}
     </update>
-    <update id="updatePassword"  parameterType="com.xuyang.blog.entity.Account">
+    <update id="updatePassword"  parameterType="com.xuyang.admin.entity.Account">
         update account set password=#{password}, modify_time = now() where uuid=#{uuid}
     </update>
-    <select id="getAccountByUUidAndPsw" parameterType="com.xuyang.blog.entity.Account" resultMap="BaseResultMap">
+    <select id="getAccountByUUidAndPsw" parameterType="com.xuyang.admin.entity.Account" resultMap="BaseResultMap">
         select * from account where uuid=#{uuid} and password=#{password} limit 1
     </select>
 </mapper>

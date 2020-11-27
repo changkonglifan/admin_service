@@ -1142,3 +1142,100 @@ Verify the connector's configuration, identify and stop any process that's liste
 2020-11-27 18:23:38.950  INFO 62249 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
 2020-11-27 18:23:39.139  INFO 62249 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 2020-11-27 18:23:39.595  INFO 62249 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-27 18:25:26.331  INFO 62249 --- [Thread-14] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-27 18:25:27.459  INFO 62249 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-11-27 18:25:27.468  INFO 62249 --- [Thread-14] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-11-27 18:29:48.593  INFO 62811 --- [main] com.xuyang.admin.AdminApplication        : Starting AdminApplication on bogon with PID 62811 (/Users/xuyang/work/myproject/myBlog/admin_service/target/classes started by xuyang in /Users/xuyang/work/myproject/myBlog/admin_service)
+2020-11-27 18:29:48.597  INFO 62811 --- [main] com.xuyang.admin.AdminApplication        : No active profile set, falling back to default profiles: default
+2020-11-27 18:29:49.986  WARN 62811 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.xuyang.blog.dao]' package. Please check your configuration.
+2020-11-27 18:29:50.276  INFO 62811 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-27 18:29:50.281  INFO 62811 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-27 18:29:50.325  INFO 62811 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 0 repository interfaces.
+2020-11-27 18:29:50.854  INFO 62811 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$da252e8e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-27 18:29:51.243  INFO 62811 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-27 18:29:51.268  INFO 62811 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-27 18:29:51.269  INFO 62811 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-27 18:29:51.379  INFO 62811 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-27 18:29:51.379  INFO 62811 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2718 ms
+2020-11-27 18:29:51.991  WARN 62811 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountController': Unsatisfied dependency expressed through field 'accountInfoService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountInfoService': Unsatisfied dependency expressed through field 'accountInfoMapper'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.xuyang.admin.dao.AccountInfoMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-11-27 18:29:51.994  INFO 62811 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-11-27 18:29:52.007  INFO 62811 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-11-27 18:29:52.166 ERROR 62811 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field accountInfoMapper in com.xuyang.admin.service.AccountInfoService required a bean of type 'com.xuyang.admin.dao.AccountInfoMapper' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.xuyang.admin.dao.AccountInfoMapper' in your configuration.
+
+2020-11-27 18:33:18.040  INFO 62985 --- [main] com.xuyang.admin.AdminApplication        : Starting AdminApplication on bogon with PID 62985 (/Users/xuyang/work/myproject/myBlog/admin_service/target/classes started by xuyang in /Users/xuyang/work/myproject/myBlog/admin_service)
+2020-11-27 18:33:18.044  INFO 62985 --- [main] com.xuyang.admin.AdminApplication        : No active profile set, falling back to default profiles: default
+2020-11-27 18:33:19.714  INFO 62985 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-27 18:33:19.717  INFO 62985 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-27 18:33:19.767  INFO 62985 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 0 repository interfaces.
+2020-11-27 18:33:23.493  INFO 63001 --- [main] com.xuyang.admin.AdminApplication        : Starting AdminApplication on bogon with PID 63001 (/Users/xuyang/work/myproject/myBlog/admin_service/target/classes started by xuyang in /Users/xuyang/work/myproject/myBlog/admin_service)
+2020-11-27 18:33:23.496  INFO 63001 --- [main] com.xuyang.admin.AdminApplication        : No active profile set, falling back to default profiles: default
+2020-11-27 18:33:24.763  INFO 63001 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-27 18:33:24.767  INFO 63001 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-27 18:33:24.805  INFO 63001 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 repository interfaces.
+2020-11-27 18:33:25.110  INFO 63001 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$479a82c8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-27 18:33:25.418  INFO 63001 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-27 18:33:25.450  INFO 63001 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-27 18:33:25.450  INFO 63001 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-27 18:33:25.587  INFO 63001 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-27 18:33:25.587  INFO 63001 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2047 ms
+2020-11-27 18:33:26.321  INFO 63001 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.Admin.AdminAccountController.logger
+2020-11-27 18:33:26.727  INFO 63001 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.Admin.OpLogsController.logger
+2020-11-27 18:33:26.731  INFO 63001 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: public static org.slf4j.Logger com.xuyang.admin.controller.Admin.TagsController.logger
+2020-11-27 18:33:27.347  INFO 63001 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-27 18:33:27.530  INFO 63001 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-27 18:33:27.932  INFO 63001 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-27 18:33:27.953  INFO 63001 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-27 18:33:27.997  INFO 63001 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-27 18:33:28.152  INFO 63001 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-27 18:33:28.242  INFO 63001 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-27 18:33:28.247  INFO 63001 --- [main] com.xuyang.admin.AdminApplication        : Started AdminApplication in 5.266 seconds (JVM running for 6.167)
+2020-11-27 18:33:32.626  INFO 63001 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-27 18:33:32.626  INFO 63001 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-27 18:33:32.633  INFO 63001 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-11-27 18:33:32.771  INFO 63001 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-11-27 18:33:32.773  INFO 63001 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2020-11-27 18:33:32.926  INFO 63001 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-11-27 18:33:33.223  INFO 63001 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-11-27 18:34:57.049  INFO 63001 --- [Thread-12] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-27 18:34:58.174  INFO 63001 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-11-27 18:34:58.182  INFO 63001 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-11-27 18:35:03.773  INFO 63083 --- [main] com.xuyang.admin.AdminApplication        : Starting AdminApplication on bogon with PID 63083 (/Users/xuyang/work/myproject/myBlog/admin_service/target/classes started by xuyang in /Users/xuyang/work/myproject/myBlog/admin_service)
+2020-11-27 18:35:03.776  INFO 63083 --- [main] com.xuyang.admin.AdminApplication        : No active profile set, falling back to default profiles: default
+2020-11-27 18:35:05.245  INFO 63083 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-27 18:35:05.248  INFO 63083 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-11-27 18:35:05.288  INFO 63083 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26ms. Found 0 repository interfaces.
+2020-11-27 18:35:05.797  INFO 63083 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$93533f0d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-11-27 18:35:06.184  INFO 63083 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-11-27 18:35:06.246  INFO 63083 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-27 18:35:06.247  INFO 63083 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-11-27 18:35:06.608  INFO 63083 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-27 18:35:06.609  INFO 63083 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2786 ms
+2020-11-27 18:35:07.734  INFO 63083 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.Admin.AdminAccountController.logger
+2020-11-27 18:35:08.101  INFO 63083 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.Admin.OpLogsController.logger
+2020-11-27 18:35:08.105  INFO 63083 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: public static org.slf4j.Logger com.xuyang.admin.controller.Admin.TagsController.logger
+2020-11-27 18:35:09.475  INFO 63083 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-11-27 18:35:09.726  INFO 63083 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-27 18:35:10.492  INFO 63083 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-11-27 18:35:10.516  INFO 63083 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-11-27 18:35:10.576  INFO 63083 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-11-27 18:35:10.891  INFO 63083 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-11-27 18:35:11.073  INFO 63083 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-11-27 18:35:11.079  INFO 63083 --- [main] com.xuyang.admin.AdminApplication        : Started AdminApplication in 7.758 seconds (JVM running for 8.657)

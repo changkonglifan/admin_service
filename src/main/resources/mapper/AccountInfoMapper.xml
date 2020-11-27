@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xuyang.blog.dao.AccountInfoMapper" >
+<mapper namespace="com.xuyang.admin.dao.AccountInfoMapper" >
     <!-- Result Map-->
-    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.AccountInfo">
+    <resultMap id="BaseResultMap" type="com.xuyang.admin.entity.AccountInfo">
         <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="nickName" jdbcType="VARCHAR" property="nickName"/>
@@ -22,11 +22,11 @@
         <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
         <result column="modify_time" property="modifyTime" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="getAccountInfo" resultType="com.xuyang.blog.entity.AccountInfo">
+    <select id="getAccountInfo" resultType="com.xuyang.admin.entity.AccountInfo">
         select uuid,username, nickName, name, sex, mobile, email, auth_name as authName, auth_range as authRange, avatar, is_del as isDel,
          level,job, introduction_of_author as introduction, create_time as creaateTime, modify_time as modifyTime from account_info where uuid=#{uuid}
     </select>
-    <insert id="addUser" parameterType="com.xuyang.blog.entity.AccountInfo">
+    <insert id="addUser" parameterType="com.xuyang.admin.entity.AccountInfo">
         insert into account_info(
             uuid, username, nickName,name,sex,mobile,email,auth_name, is_del, level, job, introduction_of_author,create_time,modify_time
         )
@@ -40,7 +40,7 @@
     <select id="getAllAccount" resultMap="BaseResultMap">
         select * from account_info
     </select>
-    <select id="getAllAccountByParams" resultMap="BaseResultMap" parameterType="com.xuyang.blog.entity.AccountInfo">
+    <select id="getAllAccountByParams" resultMap="BaseResultMap" parameterType="com.xuyang.admin.entity.AccountInfo">
         select * from account_info
         WHERE 1 = 1
         <if test="username != null and username !='' ">
@@ -61,11 +61,11 @@
         </if>
             limit #{pageBefore},#{pageSize}
     </select>
-    <update id="updateAccount" parameterType="com.xuyang.blog.entity.AccountInfo">
+    <update id="updateAccount" parameterType="com.xuyang.admin.entity.AccountInfo">
         update account_info set nickName=#{nickName}, name=#{name},sex=#{sex},mobile=#{mobile}, email=#{email},auth_name=#{authName},is_del=#{isDel},level=#{level},job=#{job},introduction_of_author=#{introduction},modify_time=now()
         where uuid=#{uuid}
     </update>
-    <select id="getAccountTotal" resultType="java.lang.Integer" parameterType="com.xuyang.blog.entity.AccountInfo">
+    <select id="getAccountTotal" resultType="java.lang.Integer" parameterType="com.xuyang.admin.entity.AccountInfo">
         select count(*) as total from account_info
         WHERE 1 = 1
         <if test="username != null and username !='' ">

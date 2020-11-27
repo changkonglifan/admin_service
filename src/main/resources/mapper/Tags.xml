@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xuyang.blog.dao.TagsMapper" >
+<mapper namespace="com.xuyang.admin.dao.TagsMapper" >
     <!-- Result Map-->
-    <resultMap id="BaseResultMap" type="com.xuyang.blog.entity.Tags">
+    <resultMap id="BaseResultMap" type="com.xuyang.admin.entity.Tags">
         <result column="id" jdbcType="VARCHAR" property="id"/>
         <result column="pid" jdbcType="VARCHAR" property="pid"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -30,7 +30,7 @@
             and id!=#{id}
         </if>
     </select>
-    <update id="updateTag" parameterType="com.xuyang.blog.entity.Tags">
+    <update id="updateTag" parameterType="com.xuyang.admin.entity.Tags">
         update tags set
         <if test="pid != null and pid != ''">
             pid = #{pid},
@@ -50,7 +50,7 @@
          updateTime=now()
         where id=#{id}
     </update>
-    <insert id="addTag" parameterType="com.xuyang.blog.entity.Tags">
+    <insert id="addTag" parameterType="com.xuyang.admin.entity.Tags">
         insert into tags(pid,name,count,sort,description,updateTime,createTime) values(#{pid},#{name},0,0,#{description},now(),now())
     </insert>
 
