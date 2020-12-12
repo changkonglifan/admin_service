@@ -7,4 +7,6 @@ public class Constants {
     public final static String PC_TOKEN = "PCTOKEN";
 
     public final static String PASSWORD = "123456";
+
+    public final static Integer SUCCESS_CODE = 1;
 }

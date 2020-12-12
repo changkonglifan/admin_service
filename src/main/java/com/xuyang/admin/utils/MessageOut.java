@@ -6,6 +6,7 @@ package com.xuyang.admin.utils;
  */
 
 import com.alibaba.fastjson.JSONObject;
+import com.xuyang.admin.constants.Constants;
 
 public class MessageOut {
     /**
@@ -42,13 +43,13 @@ public class MessageOut {
      * @return
      */
     public static JSONObject successful(Object object){
-        return output(1,"成功", object);
+        return output(Constants.SUCCESS_CODE,"成功", object);
     }
     public static JSONObject successful(){
-        return output(1, "成功");
+        return output(Constants.SUCCESS_CODE, "成功");
     }
     public static JSONObject successful(String msg){
-        return output(1, msg);
+        return output(Constants.SUCCESS_CODE, msg);
     }
 
     /**
