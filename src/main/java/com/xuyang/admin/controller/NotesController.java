@@ -40,17 +40,17 @@ public class NotesController {  @Autowired
     })
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject addNotes(
+    JSONObject addNotes(
             String title,
             String detail,
             String token
     ){
-        Object tokenJS = tokenService.getTokenInfo(token);
-        if(tokenJS == null){
-            // token失效
-            return MessageOut.sessionOut();
-        }
         try{
+            Object tokenJS = tokenService.getTokenInfo(token);
+            if(!tokenService.isEffect(token)){
+                // token失效
+                return MessageOut.sessionOut();
+            }
             JSONObject js = new JSONObject();
             String  uuid = UUID.randomUUID().toString().replace("-","");;
             Map accountToken = (Map) tokenJS;

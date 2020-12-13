@@ -15,6 +15,14 @@ public class TokenService {
     private RedisUtil redisUtil;
 
     /**
+     * 是否存在token
+     * @param token
+     * @return
+     */
+    public boolean isEffect (String token) {
+        return redisUtil.exists(token);
+    }
+    /**
      * 获取到token 并且更新 时间
      * @param token
      * @return

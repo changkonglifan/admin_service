@@ -60,7 +60,7 @@ public class OpLogsController {
     ){
         try{
             Object tokenJS = tokenService.getTokenInfo(token);
-            if(tokenJS == null){
+            if(!tokenService.isEffect(token)){
                 // token失效
                 return MessageOut.sessionOut();
             }
@@ -90,7 +90,7 @@ public class OpLogsController {
     ){
         try{
             Object tokenJS = tokenService.getTokenInfo(token);
-            if(tokenJS == null){
+            if(!tokenService.isEffect(token)){
                 return;
             }
             // 导出
@@ -122,7 +122,7 @@ public class OpLogsController {
     ){
         try{
             Object tokenJS = tokenService.getTokenInfo(token);
-            if(tokenJS == null){
+            if(!tokenService.isEffect(token)){
                 return;
             }
             // 导出
