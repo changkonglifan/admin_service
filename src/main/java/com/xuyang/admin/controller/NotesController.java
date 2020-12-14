@@ -2,6 +2,7 @@ package com.xuyang.admin.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.admin.controller.Admin.AdminAccountController;
+import com.xuyang.admin.entity.Notes;
 import com.xuyang.admin.service.NotesService;
 import com.xuyang.admin.service.TokenService;
 import com.xuyang.admin.utils.MessageOut;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -51,7 +53,7 @@ public class NotesController {  @Autowired
                 return MessageOut.sessionOut();
             }
             JSONObject js = new JSONObject();
-            String  uuid = UUID.randomUUID().toString().replace("-","");;
+            String  uuid = UUID.randomUUID().toString().replace("-","");
             Map accountToken = (Map) tokenJS;
 
             int result = notesService.addNotes(uuid, title, detail, (String) accountToken.get("uuid"));
@@ -68,18 +70,17 @@ public class NotesController {  @Autowired
 
     @ApiOperation(value = "获取笔记", notes = "获取笔记")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "page", value = "标题", dataType = "String", required = true),
-            @ApiImplicitParam(paramType = "query", name = "pageSize", value = "详情", dataType = "String", required = true),
-            @ApiImplicitParam(paramType = "query", name = "uuid", value = "详情", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "page", value = "页数", dataType = "Integer", required = true),
+            @ApiImplicitParam(paramType = "query", name = "pageSize", value = "每页数量", dataType = "Integer", required = true),
             @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
     })
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/getAllByUser", method = RequestMethod.POST)
     @ResponseBody
     JSONObject getNotes(
-            String page,
-            String pageSize,
-            String uuid
+            Integer page,
+            Integer pageSize,
+            String token
     ){
-        return MessageOut.successful();
+        return notesService.getAllByUser(page,pageSize,token);
     }
 }

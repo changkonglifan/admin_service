@@ -1,8 +1,13 @@
 package com.xuyang.admin;
 
+import com.xuyang.admin.interceptor.LoginInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 public class MyConfiguration implements WebMvcConfigurer {
 
@@ -16,21 +21,14 @@ public class MyConfiguration implements WebMvcConfigurer {
 
     }
 
+
+    /**
+     * 拦截器
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
-
-/*
-        registry.addInterceptor(new SessionInterceptor())
-                .addPathPatterns("/bill/**")
-                .addPathPatterns("/device/**")
-                .addPathPatterns("/departmant/**")
-                .addPathPatterns("/log/**")
-                .excludePathPatterns("/user/login")
-                .excludePathPatterns("/bill/report/test")
-                .excludePathPatterns("/user/logout");
-
-*/
-
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**");
     }
 }

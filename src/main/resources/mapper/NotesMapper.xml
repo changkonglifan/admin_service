@@ -20,5 +20,8 @@
             uuid, title, detail,user_uuid, folder_uuid,is_del,is_collection,create_time,update_time
         ) values (#{uuid},#{title}, #{detail},#{userId}, "", 0, 0, now(), now() )
     </insert>
+    <select id="getAllByUser" resultMap="BaseMap">
+        select * from notes where uuid=${uuid} order by create_time limit #{pageSize},#{pageBefore}
+    </select>
 
 </mapper>
