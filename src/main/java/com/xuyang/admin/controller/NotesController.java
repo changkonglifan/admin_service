@@ -3,7 +3,6 @@ package com.xuyang.admin.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.admin.controller.Admin.AdminAccountController;
 import com.xuyang.admin.service.NotesService;
-import com.xuyang.admin.service.OpLogsService;
 import com.xuyang.admin.service.TokenService;
 import com.xuyang.admin.utils.MessageOut;
 import io.swagger.annotations.Api;
@@ -60,9 +59,27 @@ public class NotesController {  @Autowired
                 return MessageOut.successful("新增成功");
             }
         }catch (Exception e){
-            return MessageOut.failed(-1, e.getMessage());
+            e.printStackTrace();
+            return MessageOut.failed(-1, e.toString());
         }
 
+        return MessageOut.successful();
+    }
+
+    @ApiOperation(value = "获取笔记", notes = "获取笔记")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "page", value = "标题", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "pageSize", value = "详情", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "uuid", value = "详情", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
+    })
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject getNotes(
+            String page,
+            String pageSize,
+            String uuid
+    ){
         return MessageOut.successful();
     }
 }

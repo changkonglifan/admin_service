@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class NotesService {
+
+    @Autowired
     private NotesMapper notesMapper;
 
     /**
