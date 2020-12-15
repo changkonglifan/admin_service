@@ -3,14 +3,14 @@ package com.xuyang.admin.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.xuyang.admin.constants.Constants;
 import com.xuyang.admin.controller.Admin.AdminAccountController;
-import com.xuyang.admin.service.OpLogsService;
-import com.xuyang.admin.utils.MessageOut;
-import com.xuyang.admin.utils.RSAEncrypt;
 import com.xuyang.admin.entity.Account;
 import com.xuyang.admin.entity.AccountInfo;
 import com.xuyang.admin.service.AccountInfoService;
 import com.xuyang.admin.service.AccountService;
+import com.xuyang.admin.service.OpLogsService;
 import com.xuyang.admin.utils.Common;
+import com.xuyang.admin.utils.MessageOut;
+import com.xuyang.admin.utils.RSAEncrypt;
 import com.xuyang.admin.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 @CrossOrigin
@@ -90,7 +89,7 @@ public class AccountController {
             JSONObject redisAccount = new JSONObject();
             redisAccount.put("uuid", accountInfo.getUuid());
             redisAccount.put("username", accountInfo.getUsername());
-//            生成uuid写入redis
+            //  生成uuid写入redis
             redisUtil.set(uuid, redisAccount, expireTime);
             js.put("account", accountInfo);
             js.put("token", uuid);
@@ -100,6 +99,7 @@ public class AccountController {
 
             return MessageOut.successful(js);
         }catch (Exception e){
+            e.printStackTrace();
             return MessageOut.failed(-3, e.toString());
         }
     }
