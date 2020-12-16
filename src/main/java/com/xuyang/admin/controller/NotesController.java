@@ -46,7 +46,7 @@ public class NotesController {
             @ApiImplicitParam(paramType = "query", name = "pageSize", value = "每页数量", dataType = "Integer", required = true),
             @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
     })
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     JSONObject getNotes(
             Integer page,
