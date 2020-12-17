@@ -21,7 +21,7 @@
         ) values (#{uuid},#{title}, #{detail},#{userId}, "", 0, 0, now(), now() )
     </insert>
     <select id="getAllByUser" resultMap="BaseMap">
-        select * from notes where user_uuid=#{uuid} order by create_time limit #{pageSize},#{pageBefore}
+        select * from notes where user_uuid=#{uuid} order by create_time limit #{pageBefore},#{pageSize}
     </select>
 
 </mapper>
