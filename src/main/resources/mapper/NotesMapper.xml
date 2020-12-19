@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyang.admin.dao.NotesMapper" >
+    <!-- Result Map-->
+    <resultMap id="BaseMap" type="com.xuyang.admin.entity.Notes">
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="detail" jdbcType="VARCHAR" property="detail"/>
+        <result column="user_uuid" jdbcType="VARCHAR" property="userId"/>
+        <result column="folder_uuid" jdbcType="VARCHAR" property="folderUuid"/>
+        <result column="is_del" jdbcType="VARCHAR" property="isDel"/>
+        <result column="is_collection" jdbcType="VARCHAR" property="isCollection"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    </resultMap>
+    <insert id="addNotes" parameterType="com.xuyang.admin.entity.Notes">
+        insert into notes(
+            uuid, title, detail,user_uuid, folder_uuid,is_del,is_collection,create_time,update_time
+        ) values (#{uuid},#{title}, #{detail},#{userId}, "", 0, 0, now(), now() )
+    </insert>
+    <select id="getAllByUser" resultMap="BaseMap">
+        select * from notes where user_uuid=#{uuid} order by create_time limit #{pageBefore},#{pageSize}
+    </select>
+
+</mapper>

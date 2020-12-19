@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyang.admin.dao.TagsMapper" >
+    <!-- Result Map-->
+    <resultMap id="BaseResultMap" type="com.xuyang.admin.entity.Tags">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="pid" jdbcType="VARCHAR" property="pid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="parentName" jdbcType="VARCHAR" property="parentName"/>
+        <result column="count" jdbcType="VARCHAR" property="count"/>
+        <result column="sort" jdbcType="VARCHAR" property="sort"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="updateTime" jdbcType="VARCHAR" property="updateTime" />
+        <result column="createTime" jdbcType="VARCHAR" property="createTime" />
+    </resultMap>
+    <select id="getAllTags" resultMap="BaseResultMap">
+        select
+        a.id as id,a.pid as pid, a.name as name, a.count as count, a.icon as icon,a.sort as sort,a.description as description, a.createTime as createTime, a.updateTime as updateTime, b.name as parentName
+        from tags as a left join tags as b on a.pid = b.id
+        <if test="name != null and name != ''">
+            where name like '%'||#{name,jdbcType=VARCHAR}||'%'
+        </if>
+    </select>
+    <select id="getTagByName" resultMap="BaseResultMap">
+        select * from tags where name = #{name}
+        <if test="id !=null and id != ''">
+            and id!=#{id}
+        </if>
+    </select>
+    <update id="updateTag" parameterType="com.xuyang.admin.entity.Tags">
+        update tags set
+        <if test="pid != null and pid != ''">
+            pid = #{pid},
+        </if>
+        <if test="name != null and name !='' ">
+            name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="description != null and description != ''">
+            description  = #{description},
+        </if>
+        <if test="pid != null and pid !='' ">
+            count =  #{count},
+        </if>
+        <if test="sort != null and sort !='' ">
+            sort =  #{sort},
+        </if>
+         updateTime=now()
+        where id=#{id}
+    </update>
+    <insert id="addTag" parameterType="com.xuyang.admin.entity.Tags">
+        insert into tags(pid,name,count,sort,description,updateTime,createTime) values(#{pid},#{name},0,0,#{description},now(),now())
+    </insert>
+
+    <delete id="deleteTag" parameterType="java.lang.String">
+        delete from tags where id=#{id}
+    </delete>
+</mapper>
