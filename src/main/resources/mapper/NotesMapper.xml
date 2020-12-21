@@ -23,5 +23,7 @@
     <select id="getAllByUser" resultMap="BaseMap">
         select * from notes where user_uuid=#{uuid} order by create_time limit #{pageBefore},#{pageSize}
     </select>
-
+    <select id="getDetail" resultMap="BaseMap">
+        select * from notes where uuid=#{uuid}
+    </select>
 </mapper>

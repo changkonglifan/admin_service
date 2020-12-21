@@ -11,4 +11,6 @@ public interface NotesMapper {
     int addNotes(String uuid, String title, String detail, String userId);
 
     List<Notes> getAllByUser(String uuid, Integer pageBefore, Integer pageSize);
+
+    Notes getDetail(String uuid);
 }

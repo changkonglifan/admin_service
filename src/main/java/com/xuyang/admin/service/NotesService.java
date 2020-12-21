@@ -77,4 +77,22 @@ public class NotesService {
         }
 
     }
+
+    /**
+     * 获取笔记详情
+     * @param uuid
+     * @return
+     */
+    public JSONObject getDetail(String uuid, String token){
+        try{
+            JSONObject js = new JSONObject();
+            Notes note = notesMapper.getDetail(uuid);
+            js.put("note", note);
+            logger.info("获取笔记详情"+ uuid);
+            return MessageOut.successful(js);
+        }catch (Exception e){
+            e.printStackTrace();
+            return MessageOut.failed(-1, e.toString());
+        }
+    }
 }

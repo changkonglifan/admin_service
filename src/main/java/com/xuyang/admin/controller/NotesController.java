@@ -40,7 +40,21 @@ public class NotesController {
     }
 
 
-    @ApiOperation(value = "获取笔记", notes = "获取笔记")
+    @ApiOperation(value = "获取笔记列表", notes = "获取笔记列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "uuid", value = "uuid", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
+    })
+
+    @RequestMapping(value = "/getDetail", method = RequestMethod.GET)
+    @ResponseBody
+    JSONObject getNotesDetail(
+            String uuid,
+            String token
+    ){
+        return notesService.getDetail(uuid, token);
+    }
+    @ApiOperation(value = "获取笔记列表", notes = "获取笔记列表")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "page", value = "页数", dataType = "Integer", required = true),
             @ApiImplicitParam(paramType = "query", name = "pageSize", value = "每页数量", dataType = "Integer", required = true),
@@ -55,4 +69,5 @@ public class NotesController {
     ){
         return notesService.getAllByUser(page,pageSize,token);
     }
+
 }
