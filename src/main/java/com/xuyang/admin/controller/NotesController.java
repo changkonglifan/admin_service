@@ -46,7 +46,7 @@ public class NotesController {
             @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
     })
 
-    @RequestMapping(value = "/getDetail", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     JSONObject getNotesDetail(
             String uuid,
