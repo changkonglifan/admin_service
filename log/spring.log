@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-12-21 15:43:33.120  INFO 16339 --- [main] com.xuyang.admin.AdminApplication        : Starting AdminApplication on bogon with PID 16339 (/Users/xuyang/work/myproject/myBlog/admin_service/target/classes started by xuyang in /Users/xuyang/work/myproject/myBlog/admin_service)
 2020-12-21 15:43:33.126  INFO 16339 --- [main] com.xuyang.admin.AdminApplication        : No active profile set, falling back to default profiles: default
 2020-12-21 15:43:33.866  INFO 16339 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
@@ -95,3 +96,40 @@
 2020-12-21 17:00:43.520  INFO 16339 --- [http-nio-8008-exec-10] c.x.a.c.Admin.AdminAccountController     : admin获取所有笔记
 2020-12-21 17:01:42.299  INFO 16339 --- [http-nio-8008-exec-9] c.x.a.c.Admin.AdminAccountController     : admin获取所有笔记
 2020-12-21 17:01:55.627  INFO 16339 --- [http-nio-8008-exec-1] c.x.a.c.Admin.AdminAccountController     : admin获取所有笔记
+=======
+2020-12-19 08:53:29.619  INFO 9432 --- [main] com.xuyang.admin.AdminApplication        : Starting AdminApplication on Caicai-PC with PID 9432 (D:\work\myproject\myBlog\admin_service\target\classes started by xy in D:\work\myproject\myBlog\admin_service)
+2020-12-19 08:53:29.629  INFO 9432 --- [main] com.xuyang.admin.AdminApplication        : No active profile set, falling back to default profiles: default
+2020-12-19 08:53:31.747  INFO 9432 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-19 08:53:31.754  INFO 9432 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-12-19 08:53:31.838  INFO 9432 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 0 repository interfaces.
+2020-12-19 08:53:32.541  INFO 9432 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4d560be2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-19 08:53:33.187  INFO 9432 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (http)
+2020-12-19 08:53:33.242  INFO 9432 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-19 08:53:33.243  INFO 9432 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2020-12-19 08:53:33.258  INFO 9432 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.24] using APR version [1.7.0].
+2020-12-19 08:53:33.258  INFO 9432 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-12-19 08:53:33.258  INFO 9432 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-12-19 08:53:33.279  INFO 9432 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2020-12-19 08:53:33.621  INFO 9432 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-12-19 08:53:33.621  INFO 9432 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3881 ms
+2020-12-19 08:53:33.785  INFO 9432 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.AccountController.logger
+2020-12-19 08:53:35.189  INFO 9432 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.Admin.AdminAccountController.logger
+2020-12-19 08:53:35.197  INFO 9432 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.controller.Admin.OpLogsController.logger
+2020-12-19 08:53:35.201  INFO 9432 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: public static org.slf4j.Logger com.xuyang.admin.controller.Admin.TagsController.logger
+2020-12-19 08:53:35.227  INFO 9432 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static final org.slf4j.Logger com.xuyang.admin.service.NotesService.logger
+2020-12-19 08:53:35.971  INFO 9432 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-12-19 08:53:36.286  INFO 9432 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-19 08:53:36.935  INFO 9432 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-19 08:53:36.970  INFO 9432 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-19 08:53:37.044  INFO 9432 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-19 08:53:37.364  INFO 9432 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2020-12-19 08:53:37.563  INFO 9432 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (http) with context path ''
+2020-12-19 08:53:37.570  INFO 9432 --- [main] com.xuyang.admin.AdminApplication        : Started AdminApplication in 8.931 seconds (JVM running for 10.381)
+2020-12-19 08:57:45.377  INFO 9432 --- [http-nio-8008-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-19 08:57:45.377  INFO 9432 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-19 08:57:45.390  INFO 9432 --- [http-nio-8008-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2020-12-19 08:57:45.463  INFO 9432 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-12-19 08:57:46.893  INFO 9432 --- [http-nio-8008-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-12-19 08:57:47.170  INFO 9432 --- [http-nio-8008-exec-1] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2020-12-19 08:57:47.173  INFO 9432 --- [http-nio-8008-exec-1] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+>>>>>>> aa7e0a74344606fec9ab358aa465d7d84e3fc266
