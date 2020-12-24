@@ -1,8 +1,11 @@
 package com.xuyang.admin.service;
 
+import com.xuyang.admin.entity.Token;
 import com.xuyang.admin.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * @Author: XuYang
@@ -40,21 +43,34 @@ public class TokenService {
     }
 
     /**
-     *
+     * 获取token信息
      * @param token
      * @return
      */
-    public String getPcTokenInfo(String token){
-        boolean isExists = redisUtil.exists(token);
-        String uuid = "";
-        if(isExists){
-            // token 存在
-            Object rs = new Object();
-            rs = redisUtil.get(token);
-            //更新 失效时间
-            redisUtil.set(token, rs, (long) 24 * 60 * 60);
-            uuid = (String) rs;
+    public Token getPcTokenInfo(String token){
+        Token tk =  new Token();
+        try{
+            boolean isExists = redisUtil.exists(token);
+            String uuid = "";
+            String userName = "";
+            if(isExists){
+                // token 存在
+                Map rs =(Map) redisUtil.get(token);
+
+                //更新 失效时间
+                redisUtil.set(token, rs, (long) 24 * 60 * 60);
+                uuid = (String) rs.get("uuid");
+                userName = (String) rs.get("username");
+                tk.setUuid(uuid);
+                tk.setUserName(userName);
+            }
+            return tk;
+        }catch (Exception e){
+            e.printStackTrace();
+            tk.setUserName(null);
+            tk.setUuid(null);
+            return tk;
         }
-        return uuid;
+
     }
 }

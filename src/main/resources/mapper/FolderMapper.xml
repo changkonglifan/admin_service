@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyang.admin.dao.FolderMapper" >
+    <!-- Result Map-->
+    <resultMap id="Base" type="com.xuyang.admin.entity.Folder">
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="pid" jdbcType="VARCHAR" property="pid"/>
+        <result column="nums" jdbcType="VARCHAR" property="nums"/>
+        <result column="user_uuid" jdbcType="VARCHAR" property="userUuid"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    </resultMap>
+    <select id="getFoldersByPid" resultMap="Base">
+        select * from folder where pid=#{pid} and user_uuid=#{userUuid}
+    </select>
+</mapper>
