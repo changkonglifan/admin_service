@@ -15,4 +15,6 @@ public interface NotesMapper {
     Notes getDetail(String uuid);
 
     int moveToFolder(String folderUuid, String uuid);
+
+    int collectionNote(String uuid, Integer isCollection);
 }

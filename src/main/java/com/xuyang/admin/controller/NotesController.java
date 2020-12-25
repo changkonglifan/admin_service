@@ -86,5 +86,19 @@ public class NotesController {
     ){
         return notesService.moveToFolder(noteUuid, folderUuid, token);
     }
-
+    @ApiOperation(value = "收藏笔记", notes = "收藏笔记")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "form", name = "noteUuid", value = "笔记ID", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "form", name = "isCollection", value = "是否收藏", dataType = "Integer", required = true),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
+    })
+    @RequestMapping(value = "/collection", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject collectionNotes(
+            String noteUuid,
+            Integer isCollection,
+            String token
+    ){
+        return notesService.collectionNote(noteUuid, isCollection, token);
+    }
 }

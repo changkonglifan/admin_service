@@ -126,4 +126,30 @@ public class NotesService {
             return MessageOut.failed(-1, e.toString());
         }
     }
+
+    /**
+     * 收藏笔记
+     * @param uuid
+     * @param isCollection 0 取消收藏 1 收藏
+     * @param token
+     * @return
+     */
+    public JSONObject collectionNote(String uuid,Integer isCollection, String token){
+        try{
+            Token tk = tokenService.getPcTokenInfo(token);
+            if(tk.getUuid() == null){
+                return MessageOut.failed(-101, "token已过期");
+            }
+            int result = notesMapper.collectionNote(uuid, isCollection);
+            logger.info(tk.getUserName()+"收藏笔记" + uuid);
+            if(result >0){
+                return MessageOut.successful("收藏成功");
+            }else {
+                return MessageOut.failed(-1, "收藏失败");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return MessageOut.failed(-1, e.toString());
+        }
+    }
 }

@@ -26,7 +26,7 @@
     <select id="getDetail" resultMap="BaseMap">
         select * from notes where uuid=#{uuid}
     </select>
-    <update id="moveToFolder" parameterType="com.xuyang.admin.entity.Notes">
-        update notes set folder_uuid=#{folderUuid} where uuid=#{uuid}
+    <update id="collectionNote" parameterType="com.xuyang.admin.entity.Notes">
+        update notes set is_collection=#{isCollection} where uuid=#{uuid}
     </update>
 </mapper>
