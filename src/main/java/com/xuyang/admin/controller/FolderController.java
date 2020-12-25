@@ -37,5 +37,20 @@ public class FolderController {
     ){
         return folderService.getFoldersByPid(pid, token);
     }
+    @ApiOperation(value = "获取笔记列表", notes = "获取笔记列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "form", name = "title", value = "名称", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "form", name = "pid", value = "父节点", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
+    })
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject addNote(
+            String token,
+            String title,
+            String pid
+    ){
+        return folderService.addFolder(title, pid, token);
+    }
 
 }

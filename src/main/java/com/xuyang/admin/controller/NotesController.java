@@ -54,6 +54,7 @@ public class NotesController {
     ){
         return notesService.getDetail(uuid, token);
     }
+
     @ApiOperation(value = "获取笔记列表", notes = "获取笔记列表")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "page", value = "页数", dataType = "Integer", required = true),
@@ -68,6 +69,22 @@ public class NotesController {
             String token
     ){
         return notesService.getAllByUser(page,pageSize,token);
+    }
+
+    @ApiOperation(value = "获取笔记列表", notes = "获取笔记列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "form", name = "folderUuid", value = "文件夹uuid", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "form", name = "noteUuid", value = "笔记ID", dataType = "String", required = true),
+            @ApiImplicitParam(paramType = "query", name = "token", value = "token", dataType = "String", required = true),
+    })
+    @RequestMapping(value = "/move", method = RequestMethod.POST)
+    @ResponseBody
+    JSONObject moveToFolder(
+            String folderUuid,
+            String noteUuid,
+            String token
+    ){
+        return notesService.moveToFolder(noteUuid, folderUuid, token);
     }
 
 }

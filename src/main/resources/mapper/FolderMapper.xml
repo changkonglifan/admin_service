@@ -16,4 +16,10 @@
     <select id="getFoldersByPid" resultMap="Base">
         select * from folder where pid=#{pid} and user_uuid=#{userUuid}
     </select>
+    <insert id="addFolder" parameterType="com.xuyang.admin.entity.Folder">
+        insert into folder(uuid,title,pid,nums,user_uuid,create_time,update_time)
+        values  (
+            #{uuid},#{title},#{pid},0,#{userUuid},now(),now()
+        )
+    </insert>
 </mapper>

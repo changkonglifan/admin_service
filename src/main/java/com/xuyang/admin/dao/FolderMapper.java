@@ -14,4 +14,6 @@ import java.util.List;
 public interface FolderMapper {
     List<Folder> getFoldersByPid(String pid, String userUuid);
 
+    int addFolder(String title, String pid,String uuid, String userUuid);
+
 }

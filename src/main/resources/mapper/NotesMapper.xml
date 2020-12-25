@@ -18,7 +18,7 @@
     <insert id="addNotes" parameterType="com.xuyang.admin.entity.Notes">
         insert into notes(
             uuid, title, detail,user_uuid, folder_uuid,is_del,is_collection,create_time,update_time
-        ) values (#{uuid},#{title}, #{detail},#{userId}, "", 0, 0, now(), now() )
+        ) values (#{uuid},#{title}, #{detail},#{userId}, "0", 0, 0, now(), now() )
     </insert>
     <select id="getAllByUser" resultMap="BaseMap">
         select * from notes where user_uuid=#{uuid} order by create_time limit #{pageBefore},#{pageSize}
@@ -26,4 +26,7 @@
     <select id="getDetail" resultMap="BaseMap">
         select * from notes where uuid=#{uuid}
     </select>
+    <update id="moveToFolder" parameterType="com.xuyang.admin.entity.Notes">
+        update notes set folder_uuid=#{folderUuid} where uuid=#{uuid}
+    </update>
 </mapper>

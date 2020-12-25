@@ -13,4 +13,6 @@ public interface NotesMapper {
     List<Notes> getAllByUser(String uuid, Integer pageBefore, Integer pageSize);
 
     Notes getDetail(String uuid);
+
+    int moveToFolder(String folderUuid, String uuid);
 }
